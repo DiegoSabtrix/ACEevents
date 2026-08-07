@@ -171,6 +171,39 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="community section" id="comunidad">
+        <div className="container">
+          <div className="community-heading">
+            <div>
+              <p className="eyebrow">Eventos anteriores</p>
+              <h2>Así llegamos a nuestra comunidad.</h2>
+            </div>
+            <div className="community-intro">
+              <p>Creemos en el poder de aprender, conectar y crecer juntos. En cada encuentro, ACE acerca herramientas, orientación y nuevas oportunidades a emprendedores y dueños de negocios.</p>
+              <span>Conexiones reales · Aprendizaje práctico · Comunidad</span>
+            </div>
+          </div>
+
+          <div className="community-gallery">
+            <figure className="community-photo community-photo-welcome">
+              <img src="/images/ace-community-event-welcome.webp" alt="Representante de ACE dando la bienvenida a participantes de un evento comunitario" />
+              <figcaption>Orientación cercana para cada emprendedor</figcaption>
+            </figure>
+            <figure className="community-photo community-photo-connections">
+              <img src="/images/ace-community-event-connections.webp" alt="Participantes conectando durante un evento de ACE" />
+              <figcaption>Espacios para crear conexiones que impulsan negocios</figcaption>
+            </figure>
+            <figure className="community-photo community-photo-group">
+              <img src="/images/ace-community-event-group.webp" alt="Emprendedores y aliados reunidos durante un evento de ACE" />
+              <figcaption>
+                <span>ACE en acción</span>
+                <strong>Construyendo oportunidades junto a nuestra comunidad.</strong>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
       <footer className="footer">
         <div className="container footer-main">
           <a className="footer-ace" href="https://aceloans.org/" target="_blank" rel="noreferrer" aria-label="Visitar el sitio web de ACE">
@@ -190,6 +223,19 @@ export default function Home() {
                 <img src="/images/sabtrix-sponsor.png" alt="Sabtrix" />
               </a>
             </div>
+          </div>
+        </div>
+        <div className="disclosure-bar">
+          <div className="container disclosure-inner">
+            <div>
+              <h2>Privacy &amp; Disclaimer</h2>
+              <p>ACE is not affiliated with Facebook or Meta Platforms, Inc. This site is not a part of the Facebook website or Facebook Inc. Additionally, this site is not endorsed by Facebook in any way.</p>
+              <p>All information collected is handled in accordance with our <a href="https://aceloans.org/privacy-policy/" target="_blank" rel="noreferrer">Privacy Policy</a>. We respect your privacy and do not share your information with third parties without consent.</p>
+            </div>
+            <nav className="legal-links" aria-label="Políticas legales de ACE">
+              <a href="https://aceloans.org/privacy-policy/" target="_blank" rel="noreferrer">Privacy Policy</a>
+              <a href="https://aceloans.org/terms-of-service/" target="_blank" rel="noreferrer">Terms of Service</a>
+            </nav>
           </div>
         </div>
       </footer>
