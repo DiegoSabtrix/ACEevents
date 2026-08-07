@@ -121,7 +121,7 @@ export default function Home() {
                 <p className="event-description">Organiza las finanzas de tu negocio, toma mejores decisiones y fortalece tu perfil para acceder a nuevas oportunidades de capital.</p>
                 <p className="topics-title">Lo que aprenderás</p>
                 <ul>{financialTopics.map(topic => <li key={topic}>{topic}</li>)}</ul>
-                <a className="text-link" href="#registro">Reservar mi cupo <span aria-hidden="true">→</span></a>
+                <a className="button event-cta" href="#registro">Reservar mi cupo <span aria-hidden="true">→</span></a>
               </div>
             </article>
 
@@ -134,7 +134,7 @@ export default function Home() {
                 <p className="event-description">Aprende a utilizar Inteligencia Artificial y estrategias digitales para ahorrar tiempo, atraer clientes y hacer crecer tu marca.</p>
                 <p className="topics-title">Lo que aprenderás</p>
                 <ul>{marketingTopics.map(topic => <li key={topic}>{topic}</li>)}</ul>
-                <a className="text-link" href="#registro">Reservar mi cupo <span aria-hidden="true">→</span></a>
+                <a className="button event-cta" href="#registro">Reservar mi cupo <span aria-hidden="true">→</span></a>
               </div>
             </article>
           </div>
