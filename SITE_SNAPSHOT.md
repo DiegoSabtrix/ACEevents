@@ -1,0 +1,88 @@
+# ACE Events — Snapshot completo del sitio
+
+Este archivo confirma la sincronización completa de la versión publicada de ACE Events con este repositorio.
+
+- Fuente: ACE Capital + Coaching + Connections
+- Rama: main
+- Archivos del sitio sincronizados: 76
+- Commit de origen de Sites: f10ebdc98516fa64bf74b5cb4a8d0d9327f0feef
+- Fecha de sincronización: 7 de agosto de 2026
+
+## Archivos incluidos
+
+- `.gitignore`
+- `.npmrc`
+- `.openai/hosting.json`
+- `.vinext/fonts/geist-8ac0455e797f/geist-001175b1.woff2`
+- `.vinext/fonts/geist-8ac0455e797f/geist-52306abf.woff2`
+- `.vinext/fonts/geist-8ac0455e797f/geist-875ccdd4.woff2`
+- `.vinext/fonts/geist-8ac0455e797f/geist-98bbbccb.woff2`
+- `.vinext/fonts/geist-8ac0455e797f/geist-ff2310f5.woff2`
+- `.vinext/fonts/geist-8ac0455e797f/style.css`
+- `.vinext/fonts/geist-mono-00e989178794/geist-mono-013b2f2f.woff2`
+- `.vinext/fonts/geist-mono-00e989178794/geist-mono-0638449e.woff2`
+- `.vinext/fonts/geist-mono-00e989178794/geist-mono-44745446.woff2`
+- `.vinext/fonts/geist-mono-00e989178794/geist-mono-44e03052.woff2`
+- `.vinext/fonts/geist-mono-00e989178794/geist-mono-971fb274.woff2`
+- `.vinext/fonts/geist-mono-00e989178794/geist-mono-f6b33328.woff2`
+- `.vinext/fonts/geist-mono-00e989178794/style.css`
+- `.vinext/fonts/open-sans-4397081012b1/open-sans-047dd381.woff2`
+- `.vinext/fonts/open-sans-4397081012b1/open-sans-2808bca2.woff2`
+- `.vinext/fonts/open-sans-4397081012b1/open-sans-3430f585.woff2`
+- `.vinext/fonts/open-sans-4397081012b1/open-sans-439c4ed2.woff2`
+- `.vinext/fonts/open-sans-4397081012b1/open-sans-6cf2fe2d.woff2`
+- `.vinext/fonts/open-sans-4397081012b1/open-sans-840d4244.woff2`
+- `.vinext/fonts/open-sans-4397081012b1/open-sans-922cd6c6.woff2`
+- `.vinext/fonts/open-sans-4397081012b1/open-sans-a48cf46a.woff2`
+- `.vinext/fonts/open-sans-4397081012b1/open-sans-b8321ec7.woff2`
+- `.vinext/fonts/open-sans-4397081012b1/open-sans-c1cec3cb.woff2`
+- `.vinext/fonts/open-sans-4397081012b1/style.css`
+- `README.md`
+- `app/RegistrationForm.tsx`
+- `app/chatgpt-auth.ts`
+- `app/globals.css`
+- `app/layout.tsx`
+- `app/page.tsx`
+- `build/sites-vite-plugin.ts`
+- `db/index.ts`
+- `db/schema.ts`
+- `drizzle.config.ts`
+- `drizzle/meta/_journal.json`
+- `eslint.config.mjs`
+- `examples/d1/app/api/notes/route.ts`
+- `examples/d1/db/schema.ts`
+- `next.config.ts`
+- `package-lock.json`
+- `package.json`
+- `postcss.config.mjs`
+- `public/favicon.svg`
+- `public/file.svg`
+- `public/globe.svg`
+- `public/images/ace-coaching.webp`
+- `public/images/ace-community-event-connections.webp`
+- `public/images/ace-community-event-group.webp`
+- `public/images/ace-community-event-welcome.webp`
+- `public/images/ace-community-fashion.webp`
+- `public/images/ace-community-tablet.webp`
+- `public/images/ace-green-original.png`
+- `public/images/ace-hero.webp`
+- `public/images/ace-loans-white.png`
+- `public/images/ace-official-white.png`
+- `public/images/ace-story-coffee.webp`
+- `public/images/ace-story-grocery.webp`
+- `public/images/ace-story-open.webp`
+- `public/images/ace-story-retail.webp`
+- `public/images/ace-wbc-green.jpg`
+- `public/images/ace-wbc-official-green.jpg`
+- `public/images/ace-white-original.png`
+- `public/images/sabtrix-sponsor.png`
+- `public/images/three-lc-sponsor.png`
+- `public/window.svg`
+- `scripts/build-verified.sh`
+- `scripts/install-ci.sh`
+- `scripts/sites-env.sh`
+- `scripts/validate-artifact.sh`
+- `tests/rendered-html.test.mjs`
+- `tsconfig.json`
+- `vite.config.ts`
+- `worker/index.ts`
