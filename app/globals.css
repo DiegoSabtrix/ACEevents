@@ -70,12 +70,12 @@ button, input, select, textarea { font: inherit; }
 .event-heading > p { margin: 0; color: var(--ink-soft); font-size: 17px; line-height: 1.6; }
 .events { background: var(--cream); }
 .event-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.event-card { overflow: hidden; border: 1px solid var(--line); border-radius: 20px; background: #fff; box-shadow: 0 12px 34px rgba(7, 49, 44, .06); transition: transform .25s ease, box-shadow .25s ease; }
+.event-card { display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: 20px; background: #fff; box-shadow: 0 12px 34px rgba(7, 49, 44, .06); transition: transform .25s ease, box-shadow .25s ease; }
 .event-card:hover { transform: translateY(-5px); box-shadow: 0 20px 46px rgba(7, 49, 44, .11); }
 .event-photo { height: 255px; background-position: center; background-size: cover; }
 .event-finance .event-photo { background-image: linear-gradient(0deg, rgba(8, 60, 55, .12), transparent), url('/images/ace-program-financiero.webp'); background-position: center 46%; }
 .event-marketing .event-photo { background-image: linear-gradient(0deg, rgba(8, 60, 55, .12), transparent), url('/images/ace-program-marketing.webp'); background-position: center 48%; }
-.event-card-body { padding: 34px 36px 38px; }
+.event-card-body { flex: 1; display: flex; flex-direction: column; padding: 34px 36px 38px; }
 .program-label { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; color: var(--green); font-size: 11px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
 .program-label span { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 10px; background: var(--lime-soft); }
 .program-label svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
@@ -89,7 +89,7 @@ button, input, select, textarea { font: inherit; }
 .event-card ul { display: grid; gap: 11px; margin: 0 0 30px; padding: 0; list-style: none; }
 .event-card li { position: relative; padding-left: 25px; color: #314844; font-size: 14px; line-height: 1.45; }
 .event-card li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--green); font-weight: 900; }
-.text-link { display: inline-flex; align-items: center; gap: 24px; padding-bottom: 6px; border-bottom: 1px solid currentColor; color: var(--green); font-size: 13px; font-weight: 800; }
+.text-link { display: inline-flex; align-items: center; gap: 24px; padding-bottom: 6px; border-bottom: 1px solid currentColor; color: var(--green); font-size: 13px; font-weight: 800; }\n.event-cta { width: 100%; min-height: 56px; margin-top: auto; justify-content: space-between; padding-inline: 22px; border-color: var(--green); border-radius: 12px; background: var(--green); color: #fff; font-size: 15px; box-shadow: 0 12px 26px rgba(8, 117, 104, .16); }\n.event-cta:hover { border-color: var(--green-dark); background: var(--green-dark); color: #fff; }\n.event-cta span { font-size: 18px; transition: transform .2s ease; }\n.event-cta:hover span { transform: translateX(4px); }
 
 .audience { background: var(--green-dark); color: #fff; }
 .audience-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 8vw; align-items: center; }
