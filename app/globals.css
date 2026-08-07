@@ -43,7 +43,7 @@ button, input, select, textarea { font: inherit; }
 .hero-content { position: relative; z-index: 2; }
 .eyebrow { margin: 0 0 16px; color: var(--green); font-size: 12px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
 .eyebrow.light { color: var(--lime); }
-.hero h1 { max-width: 590px; margin: 0; font-size: clamp(48px, 5.2vw, 72px); font-weight: 650; letter-spacing: -.05em; line-height: .98; }
+.hero h1 { max-width: 590px; margin: 0; font-size: clamp(41px, 4.42vw, 61px); font-weight: 650; letter-spacing: -.05em; line-height: .98; }
 .hero-caption { max-width: 570px; margin: 26px 0 32px; color: rgba(255, 255, 255, .8); font-size: 18px; line-height: 1.65; }
 .hero-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
 .hero-link { padding-block: 8px; border-bottom: 1px solid rgba(255, 255, 255, .55); color: rgba(255, 255, 255, .9); font-size: 13px; font-weight: 700; }
@@ -234,7 +234,7 @@ button, input, select, textarea { font: inherit; }
   .nav-actions .button { min-height: 40px; padding-inline: 15px; font-size: 12px; }
   .hero { padding: 46px 0 64px; }
   .hero-grid { grid-template-columns: 1fr; gap: 42px; }
-  .hero h1 { font-size: clamp(43px, 12vw, 59px); }
+  .hero h1 { font-size: clamp(37px, 10.2vw, 50px); }
   .hero-caption { font-size: 17px; }
   .hero-visual { min-height: 440px; }
   .hero-badge { left: 18px; bottom: 18px; }
