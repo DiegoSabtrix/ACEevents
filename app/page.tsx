@@ -77,8 +77,8 @@ export default function Home() {
 
       <header className="site-header" id="top">
         <div className="container nav-wrap">
-          <a className="brand brand-image" href="#top" aria-label="ACE, inicio">
-            <img src="/images/ace-official-white.png" alt="ACE" />
+          <a className="brand brand-image" href="https://aceloans.org/" target="_blank" rel="noreferrer" aria-label="Visitar el sitio web de ACE">
+            <img src="/images/ace-green-original.png" alt="ACE" />
           </a>
           <nav className="desktop-nav" aria-label="Navegación principal">
             <a href="#capacitaciones">Programas</a>
@@ -177,7 +177,9 @@ export default function Home() {
       <section className="registration section" id="registro">
         <div className="container registration-grid">
           <div className="registration-copy">
-            <img className="registration-logo" src="/images/ace-official-white.png" alt="ACE" />
+            <a className="registration-logo-link" href="https://aceloans.org/" target="_blank" rel="noreferrer" aria-label="Visitar el sitio web de ACE">
+              <img className="registration-logo" src="/images/ace-white-original.png" alt="ACE" />
+            </a>
             <p className="eyebrow light">Capacitación Empresarial Online Gratuita</p>
             <h2>Reserva tu lugar</h2>
             <p>Completa el formulario para asegurar tu participación. Podrás seleccionar si deseas asistir al Programa Financiero, al Programa de Marketing o a ambos.</p>
@@ -219,10 +221,25 @@ export default function Home() {
       </section>
 
       <footer className="footer">
-        <div className="container footer-inner">
-          <img src="/images/ace-official-white.png" alt="ACE" />
+        <div className="container footer-main">
+          <a className="footer-ace" href="https://aceloans.org/" target="_blank" rel="noreferrer" aria-label="Visitar el sitio web de ACE">
+            <img src="/images/ace-white-original.png" alt="ACE" />
+          </a>
           <p>Capital + Asesoría + Conexiones para emprendedores</p>
-          <a href="#top">Volver arriba <span aria-hidden="true">↑</span></a>
+          <a className="back-to-top" href="#top">Volver arriba <span aria-hidden="true">↑</span></a>
+        </div>
+        <div className="sponsors-bar">
+          <div className="container sponsors-inner">
+            <p>Patrocinadores</p>
+            <div className="sponsor-logos">
+              <a className="sponsor-logo sponsor-3lc" href="https://3lcfinancialservices.com/" target="_blank" rel="noreferrer" aria-label="Visitar 3LC Financial & Business Solutions">
+                <img src="/images/three-lc-sponsor.png" alt="3LC Financial & Business Solutions" />
+              </a>
+              <a className="sponsor-logo sponsor-sabtrix" href="https://sabtrix.com/" target="_blank" rel="noreferrer" aria-label="Visitar Sabtrix">
+                <img src="/images/sabtrix-sponsor.png" alt="Sabtrix" />
+              </a>
+            </div>
+          </div>
         </div>
       </footer>
     </main>

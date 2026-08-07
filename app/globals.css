@@ -15,7 +15,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; color: var(--ink); background: var(--white); font-family: var(--font-geist-sans), Arial, sans-serif; }
+body { margin: 0; color: var(--ink); background: var(--white); font-family: var(--font-open-sans), "Open Sans", Arial, sans-serif; }
 a { color: inherit; text-decoration: none; }
 button, input, select, textarea { font: inherit; }
 .container { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
@@ -28,8 +28,8 @@ button, input, select, textarea { font: inherit; }
 
 .site-header { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, .93); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(18, 48, 44, .08); }
 .nav-wrap { min-height: 78px; display: flex; align-items: center; gap: 38px; }
-.brand { display: grid; place-items: center; width: 116px; height: 48px; padding: 11px 15px; margin-right: auto; border-radius: 12px; background: var(--green); }
-.brand-image img { display: block; width: 88px; height: auto; }
+.brand { display: flex; align-items: center; width: 136px; min-height: 48px; margin-right: auto; }
+.brand-image img { display: block; width: 132px; height: auto; }
 .desktop-nav { display: flex; align-items: center; gap: 28px; font-size: 13px; font-weight: 650; }
 .desktop-nav a { position: relative; padding-block: 29px; }
 .desktop-nav a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 21px; height: 2px; border-radius: 2px; background: var(--green); transition: right .2s ease; }
@@ -110,7 +110,9 @@ button, input, select, textarea { font: inherit; }
 .registration { position: relative; background: linear-gradient(90deg, rgba(18, 48, 44, .99), rgba(18, 48, 44, .94) 52%, rgba(18, 48, 44, .82)), url('/images/ace-community-fashion.webp') right center / cover; color: #fff; }
 .registration-grid { display: grid; grid-template-columns: .88fr 1.12fr; gap: 8vw; align-items: start; }
 .registration-copy { position: sticky; top: 140px; }
+.registration-logo-link { display: inline-block; margin-bottom: 36px; }
 .registration-logo { display: block; width: 145px; height: auto; margin-bottom: 36px; }
+.registration-logo-link .registration-logo { margin-bottom: 0; }
 .registration-copy > p:not(.eyebrow) { max-width: 520px; margin: 26px 0 0; color: rgba(255, 255, 255, .78); font-size: 17px; line-height: 1.65; }
 .trust-note { display: grid; grid-template-columns: 38px 1fr; gap: 16px; align-items: start; margin-top: 38px; padding-top: 28px; border-top: 1px solid rgba(255, 255, 255, .18); }
 .trust-note > span { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: var(--lime); color: var(--ink); font-weight: 900; }
@@ -130,10 +132,21 @@ button, input, select, textarea { font: inherit; }
 .registration-form .button { width: 100%; margin-top: 7px; }
 
 .footer { background: #062f2b; color: #fff; }
-.footer-inner { min-height: 138px; display: flex; align-items: center; gap: 30px; }
-.footer-inner img { width: 112px; height: auto; }
-.footer-inner p { margin: 0; color: rgba(255, 255, 255, .6); font-size: 14px; }
-.footer-inner a { margin-left: auto; color: var(--lime); font-size: 12px; font-weight: 750; }
+.footer-main { min-height: 138px; display: flex; align-items: center; gap: 30px; }
+.footer-ace { display: inline-flex; align-items: center; }
+.footer-ace img { width: 118px; height: auto; }
+.footer-main > p { margin: 0; color: rgba(255, 255, 255, .6); font-size: 14px; }
+.back-to-top { margin-left: auto; color: var(--lime); font-size: 12px; font-weight: 750; }
+.sponsors-bar { border-top: 1px solid rgba(255, 255, 255, .12); background: #052825; }
+.sponsors-inner { min-height: 142px; display: flex; align-items: center; gap: 42px; }
+.sponsors-inner > p { margin: 0; color: rgba(255, 255, 255, .56); font-size: 11px; font-weight: 750; letter-spacing: .15em; text-transform: uppercase; }
+.sponsor-logos { display: flex; align-items: center; gap: 16px; }
+.sponsor-logo { height: 72px; display: grid; place-items: center; border: 1px solid rgba(255, 255, 255, .12); border-radius: 12px; overflow: hidden; transition: transform .2s ease, border-color .2s ease; }
+.sponsor-logo:hover { transform: translateY(-2px); border-color: rgba(219, 234, 85, .6); }
+.sponsor-3lc { width: 190px; padding: 10px 15px; background: #fff; }
+.sponsor-3lc img { display: block; max-width: 155px; max-height: 52px; }
+.sponsor-sabtrix { width: 190px; padding: 17px 18px; background: #000; }
+.sponsor-sabtrix img { display: block; max-width: 154px; max-height: 38px; }
 
 @media (max-width: 1000px) {
   .desktop-nav { display: none; }
@@ -156,8 +169,8 @@ button, input, select, textarea { font: inherit; }
   .container { width: min(100% - 32px, 1160px); }
   .utility-inner span:last-child { display: none; }
   .nav-wrap { min-height: 70px; gap: 10px; }
-  .brand { width: 101px; height: 44px; }
-  .brand-image img { width: 76px; }
+  .brand { width: 112px; min-height: 44px; }
+  .brand-image img { width: 108px; }
   .nav-actions { display: none; }
   .hero { padding: 46px 0 64px; }
   .hero-grid { grid-template-columns: 1fr; gap: 42px; }
@@ -182,14 +195,19 @@ button, input, select, textarea { font: inherit; }
   .registration { background: linear-gradient(rgba(18, 48, 44, .95), rgba(18, 48, 44, .98)), url('/images/ace-community-fashion.webp') 60% center / cover; }
   .registration-form { padding: 29px 21px; }
   .form-row { grid-template-columns: 1fr; }
-  .footer-inner { padding-block: 34px; display: grid; gap: 17px; }
-  .footer-inner a { margin-left: 0; }
+  .footer-main { padding-block: 34px; display: grid; gap: 17px; }
+  .back-to-top { margin-left: 0; }
+  .sponsors-inner { padding-block: 30px; align-items: flex-start; flex-direction: column; gap: 18px; }
+  .sponsor-logos { width: 100%; }
+  .sponsor-logo { flex: 1; }
 }
 
 @media (max-width: 420px) {
   .registration-form { margin-inline: -5px; }
   .form-title { display: grid; }
   .hero-actions { align-items: flex-start; flex-direction: column; gap: 17px; }
+  .sponsor-logos { align-items: stretch; flex-direction: column; }
+  .sponsor-logo { width: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
