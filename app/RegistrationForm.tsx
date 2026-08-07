@@ -48,6 +48,8 @@ export default function RegistrationForm() {
   const [hasBusiness, setHasBusiness] = useState("");
   const [attribution, setAttribution] = useState<Record<string, string>>({});
   const [reservationData, setReservationData] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -76,15 +78,67 @@ export default function RegistrationForm() {
     });
   }
 
-  function completeRegistration(event: FormEvent<HTMLFormElement>) {
+  async function completeRegistration(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    sessionStorage.removeItem("ace-registration-draft");
-    setStep(3);
-    requestAnimationFrame(() => {
-      const confirmation = document.getElementById("registro-confirmado");
-      confirmation?.focus();
-      confirmation?.scrollIntoView({ behavior: "smooth", block: "center" });
-    });
+    setSubmitError("");
+    setIsSubmitting(true);
+
+    const values = Object.fromEntries(
+      Array.from(new FormData(event.currentTarget).entries()).map(([name, value]) => [name, String(value)]),
+    );
+    const programLabel = programs.find((program) => program.value === values.eventSelection)?.label ?? "";
+
+    const payload = {
+      form_name: "ACE — Capacitación Empresarial Online",
+      registration_status: "Registro completo",
+      first_name: values.firstName,
+      last_name: values.lastName,
+      email: values.email,
+      phone: values.phone,
+      program: values.eventSelection,
+      program_label: programLabel,
+      sms_consent: values.smsConsent === "on" ? "Sí" : "No",
+      currently_in_business: values.hasBusiness === "si" ? "Sí" : "No",
+      business_name: values.businessName ?? "",
+      georgia_address: values.georgiaAddress,
+      gender: values.gender,
+      ethnicity: values.ethnicity,
+      race: values.race,
+      military_status: values.militaryStatus,
+      utm_source: values.utm_source ?? "",
+      utm_medium: values.utm_medium ?? "",
+      utm_campaign: values.utm_campaign ?? "",
+      utm_content: values.utm_content ?? "",
+      utm_term: values.utm_term ?? "",
+      campaign_id: values.campaign_id ?? "",
+      ad_id: values.ad_id ?? "",
+      source_page: values.source_page ?? window.location.href,
+      submitted_at: new Date().toISOString(),
+    };
+
+    try {
+      const response = await fetch("/api/registration", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error("No fue posible enviar el registro");
+      }
+
+      sessionStorage.removeItem("ace-registration-draft");
+      setStep(3);
+      requestAnimationFrame(() => {
+        const confirmation = document.getElementById("registro-confirmado");
+        confirmation?.focus();
+        confirmation?.scrollIntoView({ behavior: "smooth", block: "center" });
+      });
+    } catch {
+      setSubmitError("No pudimos completar tu registro. Revisa tu conexión e inténtalo nuevamente.");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   const selectedProgram = programs.find(
@@ -256,9 +310,12 @@ export default function RegistrationForm() {
           </div>
 
           <div className="form-navigation">
-            <button className="back-button" type="button" onClick={() => setStep(1)}>← Atrás</button>
-            <button className="button form-submit" type="submit">Completar mi registro <span aria-hidden="true">→</span></button>
+            <button className="back-button" type="button" onClick={() => setStep(1)} disabled={isSubmitting}>← Atrás</button>
+            <button className="button form-submit" type="submit" disabled={isSubmitting}>
+              {isSubmitting ? "Enviando registro…" : <>Completar mi registro <span aria-hidden="true">→</span></>}
+            </button>
           </div>
+          {submitError && <p className="form-error" role="alert">{submitError}</p>}
           <p className="data-use-note">
             Tus datos serán utilizados para gestionar tu registro y cumplir con los requisitos de reporte del programa.
           </p>
