@@ -5,8 +5,8 @@ Este archivo confirma la sincronización de la versión publicada de ACE Events 
 - Fuente: ACE Capital + Coaching + Connections
 - Rama: main
 - Archivos del sitio sincronizados: 79
-- Commit de origen de Sites: 520f0c022a93dd631af2999e00b4b9bb2da82496
-- Versión publicada de Sites: 15
+- Commit de origen de Sites: f93e0a747e862880cd0bc37102926b488ac11aa4
+- Versión publicada de Sites: 16
 - Fecha de sincronización: 7 de agosto de 2026
 
 ## Archivos incluidos
