@@ -89,7 +89,11 @@ button, input, select, textarea { font: inherit; }
 .event-card ul { display: grid; gap: 11px; margin: 0 0 30px; padding: 0; list-style: none; }
 .event-card li { position: relative; padding-left: 25px; color: #314844; font-size: 14px; line-height: 1.45; }
 .event-card li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--green); font-weight: 900; }
-.text-link { display: inline-flex; align-items: center; gap: 24px; padding-bottom: 6px; border-bottom: 1px solid currentColor; color: var(--green); font-size: 13px; font-weight: 800; }\n.event-cta { width: 100%; min-height: 56px; margin-top: auto; justify-content: space-between; padding-inline: 22px; border-color: var(--green); border-radius: 12px; background: var(--green); color: #fff; font-size: 15px; box-shadow: 0 12px 26px rgba(8, 117, 104, .16); }\n.event-cta:hover { border-color: var(--green-dark); background: var(--green-dark); color: #fff; }\n.event-cta span { font-size: 18px; transition: transform .2s ease; }\n.event-cta:hover span { transform: translateX(4px); }
+.text-link { display: inline-flex; align-items: center; gap: 24px; padding-bottom: 6px; border-bottom: 1px solid currentColor; color: var(--green); font-size: 13px; font-weight: 800; }
+.event-cta { width: 100%; min-height: 56px; margin-top: auto; justify-content: space-between; padding-inline: 22px; border-color: var(--green); border-radius: 12px; background: var(--green); color: #fff; font-size: 15px; box-shadow: 0 12px 26px rgba(8, 117, 104, .16); }
+.event-cta:hover { border-color: var(--green-dark); background: var(--green-dark); color: #fff; }
+.event-cta span { font-size: 18px; transition: transform .2s ease; }
+.event-cta:hover span { transform: translateX(4px); }
 
 .audience { background: var(--green-dark); color: #fff; }
 .audience-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 8vw; align-items: center; }
