@@ -55,12 +55,21 @@ export default function RegistrationForm() {
     });
   }
 
+  function completeRegistration() {
+    setStep(3);
+    requestAnimationFrame(() => {
+      const confirmation = document.getElementById("registro-confirmado");
+      confirmation?.focus();
+      confirmation?.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  }
+
   return (
     <form className="registration-form" onSubmit={reserveSpot}>
       {Object.entries(attribution).map(([name, value]) => (
         <input key={name} type="hidden" name={name} value={value} readOnly />
       ))}
-      {step === 2 && Object.entries(reservationData).map(([name, value]) => (
+      {step >= 2 && Object.entries(reservationData).map(([name, value]) => (
         <input key={name} type="hidden" name={name} value={value} readOnly />
       ))}
 
@@ -99,7 +108,7 @@ export default function RegistrationForm() {
             <span>✓ 100% gratuito</span><span>✓ Capacitación online</span><span>✓ Cupos limitados</span>
           </div>
         </>
-      ) : (
+      ) : step === 2 ? (
         <div className="additional-step">
           <div className="form-intro">
             <div>
@@ -133,9 +142,22 @@ export default function RegistrationForm() {
             </div>
           </fieldset>
 
-          <button className="button form-submit" type="button">Completar mi registro</button>
-          <button className="skip-step" type="button">Omitir por ahora</button>
+          <button className="button form-submit" type="button" onClick={completeRegistration}>Completar mi registro</button>
+          <button className="skip-step" type="button" onClick={completeRegistration}>Omitir por ahora</button>
           <button className="back-step" type="button" onClick={() => setStep(1)}>← Volver al paso anterior</button>
+        </div>
+      ) : (
+        <div className="confirmation-step" role="status" aria-live="polite">
+          <span className="confirmation-icon" aria-hidden="true">✓</span>
+          <span className="form-kicker">Registro confirmado</span>
+          <h3 id="registro-confirmado" tabIndex={-1}>¡Gracias! Tu cupo está reservado</h3>
+          <p>Recibirás un mensaje SMS y un correo electrónico con la confirmación de tu registro.</p>
+          <p>Tu acceso al evento también llegará por estos medios. Te mantendremos informado con todos los detalles.</p>
+          <div className="confirmation-details" aria-label="Próximos pasos">
+            <span>✓ Confirmación por SMS</span>
+            <span>✓ Confirmación por correo</span>
+            <span>✓ Acceso al evento</span>
+          </div>
         </div>
       )}
     </form>
