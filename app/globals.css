@@ -130,14 +130,14 @@ button, input, select, textarea { font: inherit; }
 .program-fieldset { margin: 8px 0 20px; padding: 20px 0 0; border: 0; border-top: 1px solid var(--line); }
 .program-fieldset legend { float: left; width: 100%; margin-bottom: 13px; color: #173d38; font-size: 12px; font-weight: 800; letter-spacing: .045em; text-transform: none; }
 .program-fieldset::after { content: ""; display: table; clear: both; }
-.program-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 11px; clear: both; }
-.registration-form .program-option { position: relative; min-height: 96px; margin: 0; padding: 15px 34px 15px 13px; display: flex; align-items: center; gap: 11px; border: 1px solid #d4dfdc; border-radius: 14px; background: #fbfcfa; color: var(--ink); font-size: 13px; font-weight: 700; line-height: 1.35; letter-spacing: 0; text-transform: none; cursor: pointer; transition: border-color .2s ease, background .2s ease, transform .2s ease, box-shadow .2s ease; }
-.registration-form .program-option:hover { transform: translateY(-2px); border-color: #8fb7ae; background: #fff; box-shadow: 0 10px 22px rgba(7, 49, 44, .07); }
-.registration-form .program-option:has(input:checked) { border-color: var(--green); background: #eef8f4; box-shadow: inset 0 0 0 1px var(--green), 0 10px 24px rgba(8, 117, 104, .1); }
+.program-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; clear: both; }
+.registration-form .program-option { position: relative; min-height: 52px; margin: 0; padding: 11px 13px; display: flex; align-items: center; gap: 10px; border: 1px solid #d4dfdc; border-radius: 10px; background: #fbfcfa; color: var(--ink); font-size: 13px; font-weight: 700; line-height: 1.3; letter-spacing: 0; text-transform: none; cursor: pointer; transition: border-color .2s ease, background .2s ease, box-shadow .2s ease; }
+.registration-form .program-option::before { content: ""; flex: 0 0 18px; width: 18px; height: 18px; border: 2px solid #9badaa; border-radius: 50%; background: #fff; transition: border-color .2s ease, background .2s ease, box-shadow .2s ease; }
+.registration-form .program-option:hover { border-color: #8fb7ae; background: #fff; }
+.registration-form .program-option:has(input:focus-visible) { outline: 3px solid rgba(8, 117, 104, .18); outline-offset: 2px; }
+.registration-form .program-option:has(input:checked) { border-color: var(--green); background: #eef8f4; box-shadow: inset 0 0 0 1px var(--green); }
+.registration-form .program-option:has(input:checked)::before { border-color: var(--green); background: var(--green); box-shadow: inset 0 0 0 4px #fff; }
 .registration-form .program-option input, .registration-form .business-option input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
-.program-option-icon { flex: 0 0 38px; width: 38px; height: 38px; display: grid; place-items: center; border-radius: 11px; background: var(--lime-soft); color: var(--green-dark); font-size: 17px; font-weight: 800; }
-.program-option-check { position: absolute; top: 10px; right: 10px; width: 20px; height: 20px; display: grid; place-items: center; border: 1px solid #cdd9d6; border-radius: 50%; background: #fff; color: transparent; font-size: 11px; }
-.program-option:has(input:checked) .program-option-check { border-color: var(--green); background: var(--green); color: #fff; }
 .form-submit { width: 100%; min-height: 54px; margin-top: 3px; border-color: var(--lime); border-radius: 12px; background: linear-gradient(135deg, #dbea55, #d5e73e); color: var(--ink); font-size: 15px; box-shadow: 0 12px 26px rgba(153, 173, 22, .18); }
 .form-submit:hover { border-color: var(--green); background: var(--green); color: #fff; }
 .form-reassurance { display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; margin-top: 16px; color: var(--ink-soft); font-size: 12px; font-weight: 650; }
@@ -236,7 +236,7 @@ button, input, select, textarea { font: inherit; }
   .form-row { grid-template-columns: 1fr; }
   .contact-row { grid-template-columns: 1.25fr .75fr; }
   .program-options { grid-template-columns: 1fr; gap: 7px; }
-  .registration-form .program-option { min-height: 62px; }
+  .registration-form .program-option { min-height: 50px; }
   .business-options { grid-template-columns: 1fr; }
   .form-reassurance { justify-content: flex-start; gap: 8px 13px; }
   .community-heading { grid-template-columns: 1fr; gap: 24px; margin-bottom: 34px; }

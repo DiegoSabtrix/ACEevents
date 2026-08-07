@@ -3,9 +3,9 @@
 import { FormEvent, useEffect, useState } from "react";
 
 const programs = [
-  { value: "financiero", label: "Programa Financiero", icon: "↗" },
-  { value: "marketing", label: "Programa de Marketing", icon: "✦" },
-  { value: "ambos", label: "Quiero asistir a ambos", icon: "✓" },
+  { value: "financiero", label: "Programa Financiero" },
+  { value: "marketing", label: "Programa de Marketing" },
+  { value: "ambos", label: "Ambos programas" },
 ];
 
 const businessTypes = [
@@ -88,9 +88,7 @@ export default function RegistrationForm() {
               {programs.map((program) => (
                 <label className="program-option" key={program.value}>
                   <input type="radio" name="eventSelection" value={program.value} required />
-                  <span className="program-option-icon" aria-hidden="true">{program.icon}</span>
                   <span>{program.label}</span>
-                  <span className="program-option-check" aria-hidden="true">✓</span>
                 </label>
               ))}
             </div>
