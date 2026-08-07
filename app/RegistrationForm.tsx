@@ -90,6 +90,7 @@ export default function RegistrationForm() {
                   <input type="radio" name="eventSelection" value={program.value} required />
                   <span className="program-option-icon" aria-hidden="true">{program.icon}</span>
                   <span>{program.label}</span>
+                  <span className="program-option-check" aria-hidden="true">✓</span>
                 </label>
               ))}
             </div>
