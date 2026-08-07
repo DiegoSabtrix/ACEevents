@@ -143,6 +143,7 @@ button, input, select, textarea { font: inherit; }
 .registration-form .program-option input, .registration-form .business-option input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 .form-submit { width: 100%; min-height: 54px; margin-top: 3px; border-color: var(--lime); border-radius: 12px; background: linear-gradient(135deg, #dbea55, #d5e73e); color: var(--ink); font-size: 15px; box-shadow: 0 12px 26px rgba(153, 173, 22, .18); }
 .form-submit:hover { border-color: var(--green); background: var(--green); color: #fff; }
+.form-submit:disabled, .back-button:disabled { cursor: wait; opacity: .68; transform: none; }
 .form-reassurance { display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; margin-top: 16px; color: var(--ink-soft); font-size: 12px; font-weight: 650; }
 .additional-step { min-height: 560px; }
 .compact-fieldset { margin: 0 0 17px; padding: 0; border: 0; }
@@ -164,6 +165,7 @@ button, input, select, textarea { font: inherit; }
 .back-button { min-height: 54px; padding: 0 20px; border: 1px solid #cad8d4; border-radius: 12px; background: #fff; color: var(--green); font-size: 13px; font-weight: 750; cursor: pointer; transition: border-color .2s ease, background .2s ease; }
 .back-button:hover { border-color: var(--green); background: #f2f8f5; }
 .data-use-note { margin: 13px auto 0; color: var(--ink-soft); font-size: 11px; line-height: 1.5; text-align: center; }
+.form-error { margin: 14px 0 0; padding: 11px 13px; border: 1px solid #f1b9b4; border-radius: 10px; background: #fff4f3; color: #9c2f28; font-size: 12px; font-weight: 650; line-height: 1.5; text-align: center; }
 .confirmation-step { min-height: 520px; padding: 42px 22px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
 .confirmation-icon { width: 68px; height: 68px; margin-bottom: 24px; display: grid; place-items: center; border-radius: 50%; background: linear-gradient(135deg, var(--green), #0ba28f); color: #fff; font-size: 31px; font-weight: 800; box-shadow: 0 16px 34px rgba(8, 117, 104, .22); }
 .confirmation-step h3 { max-width: 560px; margin: 10px 0 17px; color: var(--ink); font-size: clamp(30px, 4vw, 43px); line-height: 1.08; letter-spacing: -.04em; }
