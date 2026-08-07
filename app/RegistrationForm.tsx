@@ -8,16 +8,6 @@ const programs = [
   { value: "ambos", label: "Ambos programas" },
 ];
 
-const businessTypes = [
-  "Servicios profesionales",
-  "Construcción o servicios para el hogar",
-  "Restaurante o alimentos",
-  "Belleza y bienestar",
-  "Retail o comercio electrónico",
-  "Tecnología",
-  "Otro",
-];
-
 const attributionFields = [
   "utm_source",
   "utm_medium",
@@ -28,8 +18,34 @@ const attributionFields = [
   "ad_id",
 ] as const;
 
+const genderOptions = ["Mujer", "Hombre", "Prefiero no responder"];
+const militaryOptions = [
+  "Sin servicio militar",
+  "Veterano",
+  "Veterano con discapacidad relacionada con el servicio",
+  "Reserva o Guardia Nacional",
+  "Servicio activo",
+  "Cónyuge de un miembro de las Fuerzas Armadas",
+  "Prefiero no responder",
+];
+const raceOptions = [
+  "Blanca",
+  "Negra o afroamericana",
+  "Asiática",
+  "Indígena americana o nativa de Alaska",
+  "Nativa de Hawái o de las islas del Pacífico",
+  "Multirracial",
+  "Prefiero no responder",
+];
+const ethnicityOptions = [
+  "Hispano o latino",
+  "No hispano o latino",
+  "Prefiero no responder",
+];
+
 export default function RegistrationForm() {
   const [step, setStep] = useState(1);
+  const [hasBusiness, setHasBusiness] = useState("");
   const [attribution, setAttribution] = useState<Record<string, string>>({});
   const [reservationData, setReservationData] = useState<Record<string, string>>({});
 
@@ -41,21 +57,28 @@ export default function RegistrationForm() {
     setAttribution({ ...values, source_page: window.location.href });
   }, []);
 
-  function reserveSpot(event: FormEvent<HTMLFormElement>) {
+  function goToStepTwo(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    setReservationData(
-      Object.fromEntries(
-        ["fullName", "email", "phone", "zipCode", "eventSelection"].map((name) => [name, String(data.get(name) ?? "")]),
-      ),
+    const contact = Object.fromEntries(
+      ["firstName", "lastName", "email", "phone", "smsConsent", "eventSelection"].map((name) => [
+        name,
+        String(data.get(name) ?? ""),
+      ]),
     );
+
+    setReservationData(contact);
+    sessionStorage.setItem("ace-registration-draft", JSON.stringify({ ...contact, ...attribution }));
     setStep(2);
     requestAnimationFrame(() => {
       document.getElementById("paso-adicional")?.focus();
+      document.querySelector(".registration-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   }
 
-  function completeRegistration() {
+  function completeRegistration(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    sessionStorage.removeItem("ace-registration-draft");
     setStep(3);
     requestAnimationFrame(() => {
       const confirmation = document.getElementById("registro-confirmado");
@@ -64,48 +87,83 @@ export default function RegistrationForm() {
     });
   }
 
+  const selectedProgram = programs.find(
+    (program) => program.value === reservationData.eventSelection,
+  )?.label;
+
   return (
-    <form className="registration-form" onSubmit={reserveSpot}>
+    <form
+      className="registration-form"
+      onSubmit={step === 1 ? goToStepTwo : step === 2 ? completeRegistration : (event) => event.preventDefault()}
+    >
       {Object.entries(attribution).map(([name, value]) => (
         <input key={name} type="hidden" name={name} value={value} readOnly />
       ))}
-      {step >= 2 && Object.entries(reservationData).map(([name, value]) => (
-        <input key={name} type="hidden" name={name} value={value} readOnly />
-      ))}
+      {step >= 2 &&
+        Object.entries(reservationData).map(([name, value]) => (
+          <input key={name} type="hidden" name={name} value={value} readOnly />
+        ))}
 
       {step === 1 ? (
         <>
           <div className="form-intro">
             <div>
-              <span className="form-kicker">Toma menos de 30 segundos</span>
-              <h3>Reserva tu cupo gratis</h3>
+              <span className="form-kicker">Registro gratuito</span>
+              <h3>Reserva tu cupo</h3>
             </div>
             <span className="step-pill">Paso 1 de 2</span>
           </div>
-          <p className="form-subtitle">Completa tus datos y recibirás la confirmación y el enlace de acceso por correo electrónico.</p>
+          <p className="form-subtitle">
+            Completa tus datos para comenzar. El registro toma aproximadamente 2 minutos.
+          </p>
 
-          <label>Nombre completo<input name="fullName" type="text" placeholder="Tu nombre y apellido" autoComplete="name" required /></label>
-          <label>Correo electrónico<input name="email" type="email" placeholder="correo@ejemplo.com" autoComplete="email" required /></label>
-          <div className="form-row contact-row">
-            <label>Teléfono<input name="phone" type="tel" placeholder="(000) 000-0000" autoComplete="tel" required /></label>
-            <label>Código postal<input name="zipCode" type="text" placeholder="00000" inputMode="numeric" autoComplete="postal-code" required /></label>
+          <div className="form-row name-row">
+            <label>
+              Nombre
+              <input name="firstName" type="text" placeholder="Tu nombre" autoComplete="given-name" defaultValue={reservationData.firstName} required />
+            </label>
+            <label>
+              Apellido
+              <input name="lastName" type="text" placeholder="Tu apellido" autoComplete="family-name" defaultValue={reservationData.lastName} required />
+            </label>
           </div>
+          <label>
+            Correo electrónico
+            <input name="email" type="email" placeholder="correo@ejemplo.com" autoComplete="email" defaultValue={reservationData.email} required />
+          </label>
+          <label>
+            Teléfono
+            <input name="phone" type="tel" placeholder="(000) 000-0000" autoComplete="tel" defaultValue={reservationData.phone} required />
+          </label>
+
+          <label className="consent-row">
+            <input name="smsConsent" type="checkbox" defaultChecked={reservationData.smsConsent === "on"} required />
+            <span>
+              Acepto recibir mensajes de confirmación y recordatorios de ACE por SMS y correo electrónico. Consulta la{` `}
+              <a href="https://aceloans.org/privacy-policy/" target="_blank" rel="noreferrer">Política de privacidad</a> y los{` `}
+              <a href="https://aceloans.org/terms-of-service/" target="_blank" rel="noreferrer">Términos de servicio</a>.
+            </span>
+          </label>
 
           <fieldset className="program-fieldset">
             <legend>¿A cuál programa deseas asistir?</legend>
             <div className="program-options">
               {programs.map((program) => (
                 <label className="program-option" key={program.value}>
-                  <input type="radio" name="eventSelection" value={program.value} required />
+                  <input type="radio" name="eventSelection" value={program.value} defaultChecked={reservationData.eventSelection === program.value} required />
                   <span>{program.label}</span>
                 </label>
               ))}
             </div>
           </fieldset>
 
-          <button className="button form-submit" type="submit">Reservar mi cupo gratis <span aria-hidden="true">→</span></button>
+          <button className="button form-submit" type="submit">
+            Continuar <span aria-hidden="true">→</span>
+          </button>
           <div className="form-reassurance" aria-label="Beneficios de la capacitación">
-            <span>✓ 100% gratuito</span><span>✓ Capacitación online</span><span>✓ Cupos limitados</span>
+            <span>✓ 100% gratuito</span>
+            <span>✓ Capacitación online</span>
+            <span>✓ Cupos limitados</span>
           </div>
         </>
       ) : step === 2 ? (
@@ -113,46 +171,112 @@ export default function RegistrationForm() {
           <div className="form-intro">
             <div>
               <span className="form-kicker">Información adicional</span>
-              <h3 id="paso-adicional" tabIndex={-1}>¡Tu cupo está casi listo!</h3>
+              <h3 id="paso-adicional" tabIndex={-1}>Completa tu registro</h3>
             </div>
             <span className="step-pill">Paso 2 de 2</span>
           </div>
-          <p className="form-subtitle">Cuéntanos un poco sobre tu negocio para personalizar tu experiencia.</p>
+          <p className="form-subtitle">
+            ACE solicita esta información para conocer a los participantes y preparar los reportes del programa.
+          </p>
 
-          <label>¿En qué etapa se encuentra tu negocio?
-            <select name="businessStage" defaultValue="">
-              <option value="" disabled>Selecciona una opción</option>
-              <option>Tengo una idea de negocio</option>
-              <option>Estoy comenzando</option>
-              <option>Mi negocio está en operación</option>
-              <option>Mi negocio está en crecimiento</option>
-            </select>
-          </label>
-          <label>Nombre de la empresa <small>(opcional)</small><input name="company" type="text" autoComplete="organization" /></label>
-
-          <fieldset className="program-fieldset business-fieldset">
-            <legend>¿Qué describe mejor tu negocio o proyecto?</legend>
-            <div className="business-options">
-              {businessTypes.map((type) => (
-                <label className="business-option" key={type}>
-                  <input type="radio" name="businessType" value={type} />
-                  <span>{type}</span>
+          <fieldset className="compact-fieldset">
+            <legend>¿Actualmente tienes un negocio?</legend>
+            <div className="binary-options">
+              {[
+                { value: "si", label: "Sí" },
+                { value: "no", label: "No" },
+              ].map((option) => (
+                <label className="binary-option" key={option.value}>
+                  <input
+                    type="radio"
+                    name="hasBusiness"
+                    value={option.value}
+                    checked={hasBusiness === option.value}
+                    onChange={(event) => setHasBusiness(event.target.value)}
+                    required
+                  />
+                  <span>{option.label}</span>
                 </label>
               ))}
             </div>
           </fieldset>
 
-          <button className="button form-submit" type="button" onClick={completeRegistration}>Completar mi registro</button>
-          <button className="skip-step" type="button" onClick={completeRegistration}>Omitir por ahora</button>
-          <button className="back-step" type="button" onClick={() => setStep(1)}>← Volver al paso anterior</button>
+          {hasBusiness === "si" && (
+            <label className="conditional-field">
+              Nombre del negocio
+              <input name="businessName" type="text" autoComplete="organization" required />
+            </label>
+          )}
+
+          <label>
+            Dirección en Georgia
+            <input
+              name="georgiaAddress"
+              type="text"
+              placeholder="Calle, ciudad, estado y código postal"
+              autoComplete="street-address"
+              required
+            />
+          </label>
+
+          <div className="demographic-note">
+            <strong>Información demográfica</strong>
+            <span>Tus respuestas se usan únicamente para fines de reporte y no afectan tu participación.</span>
+          </div>
+
+          <div className="select-grid">
+            <label>
+              Género
+              <select name="gender" defaultValue="" required>
+                <option value="" disabled>Selecciona una opción</option>
+                {genderOptions.map((option) => <option key={option}>{option}</option>)}
+              </select>
+            </label>
+            <label>
+              Origen étnico
+              <select name="ethnicity" defaultValue="" required>
+                <option value="" disabled>Selecciona una opción</option>
+                {ethnicityOptions.map((option) => <option key={option}>{option}</option>)}
+              </select>
+            </label>
+            <label>
+              Raza
+              <select name="race" defaultValue="" required>
+                <option value="" disabled>Selecciona una opción</option>
+                {raceOptions.map((option) => <option key={option}>{option}</option>)}
+              </select>
+            </label>
+            <label>
+              Relación con el servicio militar
+              <select name="militaryStatus" defaultValue="" required>
+                <option value="" disabled>Selecciona una opción</option>
+                {militaryOptions.map((option) => <option key={option}>{option}</option>)}
+              </select>
+            </label>
+          </div>
+
+          <div className="form-navigation">
+            <button className="back-button" type="button" onClick={() => setStep(1)}>← Atrás</button>
+            <button className="button form-submit" type="submit">Completar mi registro <span aria-hidden="true">→</span></button>
+          </div>
+          <p className="data-use-note">
+            Tus datos serán utilizados para gestionar tu registro y cumplir con los requisitos de reporte del programa.
+          </p>
         </div>
       ) : (
         <div className="confirmation-step" role="status" aria-live="polite">
           <span className="confirmation-icon" aria-hidden="true">✓</span>
           <span className="form-kicker">Registro confirmado</span>
-          <h3 id="registro-confirmado" tabIndex={-1}>¡Gracias! Tu cupo está reservado</h3>
-          <p>Recibirás un mensaje SMS y un correo electrónico con la confirmación de tu registro.</p>
-          <p>Tu acceso al evento también llegará por estos medios. Te mantendremos informado con todos los detalles.</p>
+          <h3 id="registro-confirmado" tabIndex={-1}>¡Tu registro está completo!</h3>
+          <p>Gracias por registrarte. Te enviaremos un SMS y un correo electrónico con la confirmación.</p>
+          <p>También recibirás el enlace de acceso y los recordatorios antes del evento.</p>
+          {selectedProgram && (
+            <div className="selected-program">
+              <span>Programa seleccionado</span>
+              <strong>{selectedProgram}</strong>
+              <small>Modalidad online</small>
+            </div>
+          )}
           <div className="confirmation-details" aria-label="Próximos pasos">
             <span>✓ Confirmación por SMS</span>
             <span>✓ Confirmación por correo</span>

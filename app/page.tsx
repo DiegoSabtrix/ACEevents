@@ -1,19 +1,17 @@
 import RegistrationForm from "./RegistrationForm";
 
 const financialTopics = [
-  "Finanzas para no financieros",
-  "Indicadores financieros clave",
-  "Capital y opciones de financiamiento para pequeñas empresas",
-  "Cómo prepararte antes de solicitar un préstamo",
-  "Herramientas para tomar mejores decisiones financieras",
+  "Organiza las finanzas de tu negocio",
+  "Toma decisiones financieras con mayor confianza",
+  "Conoce cómo fortalecer el perfil financiero de tu negocio",
+  "Prepárate para acceder a préstamos e inversión",
 ];
 
 const marketingTopics = [
-  "Estrategia de marketing",
-  "Generación de leads",
-  "Cómo convertir oportunidades en clientes",
-  "Inteligencia Artificial aplicada a pequeñas empresas",
-  "Estrategias para aumentar la productividad comercial",
+  "Utiliza herramientas de IA para ahorrar tiempo y aumentar la productividad",
+  "Mejora la atención al cliente y optimiza tus procesos",
+  "Aprende a atraer más clientes con estrategias digitales",
+  "Descubre cómo hacer crecer tu marca utilizando herramientas digitales",
 ];
 
 const audiences = [
@@ -110,17 +108,17 @@ export default function Home() {
         <div className="container">
           <div className="section-heading event-heading">
             <div><p className="eyebrow">Dos programas. Una sola reserva.</p><h2>Elige el programa que tu negocio necesita.</h2></div>
-            <p>Reserva tu cupo en el Programa Financiero, en el Programa de Marketing o aprovecha ambos.</p>
+            <p>Diseñados para emprendedores y pequeños empresarios hispanos que desean hacer crecer su empresa, aumentar sus ventas y acceder a nuevas oportunidades de financiamiento.</p>
           </div>
 
           <div className="event-grid">
             <article className="event-card event-finance">
-              <div className="event-photo" role="img" aria-label="Emprendedores trabajando juntos en su negocio"></div>
+              <div className="event-photo" role="img" aria-label="Sesión de capacitación financiera y QuickBooks para emprendedores"></div>
               <div className="event-card-body">
                 <div className="program-label"><span><ProgramIcon type="finance" /></span> Programa virtual</div>
                 <h3>Programa Financiero</h3>
                 <div className="event-meta"><div><small>FECHA</small><strong>Martes, 18 de agosto de 2026</strong></div><div><small>HORARIO</small><strong>10:00 AM – 12:00 PM (ET)</strong></div></div>
-                <p className="event-description">Aprende a comprender mejor las finanzas de tu negocio y conoce herramientas para planificar su crecimiento.</p>
+                <p className="event-description">Organiza las finanzas de tu negocio, toma mejores decisiones y fortalece tu perfil para acceder a nuevas oportunidades de capital.</p>
                 <p className="topics-title">Lo que aprenderás</p>
                 <ul>{financialTopics.map(topic => <li key={topic}>{topic}</li>)}</ul>
                 <a className="text-link" href="#registro">Reservar mi cupo <span aria-hidden="true">→</span></a>
@@ -128,12 +126,12 @@ export default function Home() {
             </article>
 
             <article className="event-card event-marketing">
-              <div className="event-photo" role="img" aria-label="Dueña de negocio usando tecnología en su tienda"></div>
+              <div className="event-photo" role="img" aria-label="Sesión de capacitación en estrategia, marketing e inteligencia artificial"></div>
               <div className="event-card-body">
                 <div className="program-label"><span><ProgramIcon type="marketing" /></span> Programa virtual</div>
                 <h3>Programa de Marketing</h3>
                 <div className="event-meta"><div><small>FECHA</small><strong>Jueves, 20 de agosto de 2026</strong></div><div><small>HORARIO</small><strong>10:00 AM – 12:00 PM (ET)</strong></div></div>
-                <p className="event-description">Aprende estrategias para atraer clientes, generar oportunidades comerciales y aprovechar la Inteligencia Artificial en tu negocio.</p>
+                <p className="event-description">Aprende a utilizar Inteligencia Artificial y estrategias digitales para ahorrar tiempo, atraer clientes y hacer crecer tu marca.</p>
                 <p className="topics-title">Lo que aprenderás</p>
                 <ul>{marketingTopics.map(topic => <li key={topic}>{topic}</li>)}</ul>
                 <a className="text-link" href="#registro">Reservar mi cupo <span aria-hidden="true">→</span></a>
@@ -164,8 +162,8 @@ export default function Home() {
             </a>
             <p className="eyebrow light">Capacitación Empresarial Online Gratuita</p>
             <h2>Reserva tu cupo</h2>
-            <p>Elige el Programa Financiero, el Programa de Marketing o ambos. Solo necesitas unos segundos para reservar tu cupo.</p>
-            <div className="trust-note"><span aria-hidden="true">✓</span><p><strong>Tu cupo es completamente gratuito.</strong> Recibirás por correo electrónico la confirmación y el enlace para conectarte a la capacitación.</p></div>
+            <p>Elige el Programa Financiero, el Programa de Marketing o ambos y completa un registro claro de aproximadamente 2 minutos.</p>
+            <div className="trust-note"><span aria-hidden="true">✓</span><p><strong>Tu cupo es completamente gratuito.</strong> Recibirás por SMS y correo electrónico la confirmación y el enlace para conectarte a la capacitación.</p></div>
           </div>
           <RegistrationForm />
         </div>
@@ -195,10 +193,11 @@ export default function Home() {
             </figure>
             <figure className="community-photo community-photo-group">
               <img src="/images/ace-community-event-group.webp" alt="Emprendedores y aliados reunidos durante un evento de ACE" />
-              <figcaption>
-                <span>ACE en acción</span>
-                <strong>Construyendo oportunidades junto a nuestra comunidad.</strong>
-              </figcaption>
+              <figcaption>Construyendo oportunidades junto a nuestra comunidad</figcaption>
+            </figure>
+            <figure className="community-photo community-photo-speaker">
+              <img src="/images/ace-community-event-speaker.webp" alt="Representante de ACE compartiendo conocimientos con emprendedores durante un evento" />
+              <figcaption>Conocimiento y orientación para impulsar cada negocio</figcaption>
             </figure>
           </div>
         </div>

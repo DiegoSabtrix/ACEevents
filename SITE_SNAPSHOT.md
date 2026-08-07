@@ -1,11 +1,12 @@
-# ACE Events — Snapshot completo del sitio
+# ACE Events — Snapshot actualizado del sitio
 
-Este archivo confirma la sincronización completa de la versión publicada de ACE Events con este repositorio.
+Este archivo confirma la sincronización de la versión publicada de ACE Events con este repositorio.
 
 - Fuente: ACE Capital + Coaching + Connections
 - Rama: main
-- Archivos del sitio sincronizados: 76
-- Commit de origen de Sites: f10ebdc98516fa64bf74b5cb4a8d0d9327f0feef
+- Archivos del sitio sincronizados: 79
+- Commit de origen de Sites: 5ce06343b18a47c572eb007134a906b2061f227e
+- Versión publicada de Sites: 14
 - Fecha de sincronización: 7 de agosto de 2026
 
 ## Archivos incluidos
@@ -61,6 +62,7 @@ Este archivo confirma la sincronización completa de la versión publicada de AC
 - `public/images/ace-coaching.webp`
 - `public/images/ace-community-event-connections.webp`
 - `public/images/ace-community-event-group.webp`
+- `public/images/ace-community-event-speaker.webp`
 - `public/images/ace-community-event-welcome.webp`
 - `public/images/ace-community-fashion.webp`
 - `public/images/ace-community-tablet.webp`
@@ -68,6 +70,8 @@ Este archivo confirma la sincronización completa de la versión publicada de AC
 - `public/images/ace-hero.webp`
 - `public/images/ace-loans-white.png`
 - `public/images/ace-official-white.png`
+- `public/images/ace-program-financiero.webp`
+- `public/images/ace-program-marketing.webp`
 - `public/images/ace-story-coffee.webp`
 - `public/images/ace-story-grocery.webp`
 - `public/images/ace-story-open.webp`
