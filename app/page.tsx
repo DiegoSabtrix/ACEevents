@@ -1,3 +1,5 @@
+import RegistrationForm from "./RegistrationForm";
+
 const financialTopics = [
   "Finanzas para no financieros",
   "Indicadores financieros clave",
@@ -68,34 +70,14 @@ export default function Home() {
     <main>
       <a className="skip-link" href="#main-content">Ir al contenido</a>
 
-      <div className="utility-bar">
-        <div className="container utility-inner">
-          <span>Educación que impulsa negocios</span>
-          <span>Capacitación empresarial en español</span>
-        </div>
-      </div>
-
       <header className="site-header" id="top">
         <div className="container nav-wrap">
           <a className="brand brand-image" href="https://aceloans.org/" target="_blank" rel="noreferrer" aria-label="Visitar el sitio web de ACE">
             <img src="/images/ace-green-original.png" alt="ACE" />
           </a>
-          <nav className="desktop-nav" aria-label="Navegación principal">
-            <a href="#capacitaciones">Programas</a>
-            <a href="#participantes">Quiénes pueden participar</a>
-            <a href="#registro">Registro</a>
-          </nav>
           <div className="nav-actions">
             <a className="button button-small" href="#registro">Reservar mi cupo</a>
           </div>
-          <details className="mobile-menu">
-            <summary aria-label="Abrir navegación"><span></span><span></span><span></span></summary>
-            <nav aria-label="Navegación móvil">
-              <a href="#capacitaciones">Programas</a>
-              <a href="#participantes">Quiénes pueden participar</a>
-              <a href="#registro">Reservar mi cupo</a>
-            </nav>
-          </details>
         </div>
       </header>
 
@@ -120,15 +102,15 @@ export default function Home() {
         <div className="container facts-grid">
           <div><span className="fact-icon"><OnlineIcon /></span><p><strong>100% online</strong><small>Conéctate desde cualquier lugar</small></p></div>
           <div><span className="fact-icon"><FreeIcon /></span><p><strong>Sin costo</strong><small>Capacitación completamente gratuita</small></p></div>
-          <div><span className="fact-icon"><RegistrationIcon /></span><p><strong>Un solo registro</strong><small>Participa en uno o ambos programas</small></p></div>
+          <div><span className="fact-icon"><RegistrationIcon /></span><p><strong>Una sola reserva</strong><small>Reserva uno o ambos programas</small></p></div>
         </div>
       </section>
 
       <section className="events section" id="capacitaciones">
         <div className="container">
           <div className="section-heading event-heading">
-            <div><p className="eyebrow">Dos programas. Una sola inscripción.</p><h2>Elige el programa que tu negocio necesita.</h2></div>
-            <p>Puedes participar en el Programa Financiero, en el Programa de Marketing o aprovechar ambos.</p>
+            <div><p className="eyebrow">Dos programas. Una sola reserva.</p><h2>Elige el programa que tu negocio necesita.</h2></div>
+            <p>Reserva tu cupo en el Programa Financiero, en el Programa de Marketing o aprovecha ambos.</p>
           </div>
 
           <div className="event-grid">
@@ -141,7 +123,7 @@ export default function Home() {
                 <p className="event-description">Aprende a comprender mejor las finanzas de tu negocio y conoce herramientas para planificar su crecimiento.</p>
                 <p className="topics-title">Lo que aprenderás</p>
                 <ul>{financialTopics.map(topic => <li key={topic}>{topic}</li>)}</ul>
-                <a className="text-link" href="#registro">Inscribirme en este programa <span aria-hidden="true">→</span></a>
+                <a className="text-link" href="#registro">Reservar mi cupo <span aria-hidden="true">→</span></a>
               </div>
             </article>
 
@@ -154,7 +136,7 @@ export default function Home() {
                 <p className="event-description">Aprende estrategias para atraer clientes, generar oportunidades comerciales y aprovechar la Inteligencia Artificial en tu negocio.</p>
                 <p className="topics-title">Lo que aprenderás</p>
                 <ul>{marketingTopics.map(topic => <li key={topic}>{topic}</li>)}</ul>
-                <a className="text-link" href="#registro">Inscribirme en este programa <span aria-hidden="true">→</span></a>
+                <a className="text-link" href="#registro">Reservar mi cupo <span aria-hidden="true">→</span></a>
               </div>
             </article>
           </div>
@@ -181,42 +163,11 @@ export default function Home() {
               <img className="registration-logo" src="/images/ace-white-original.png" alt="ACE" />
             </a>
             <p className="eyebrow light">Capacitación Empresarial Online Gratuita</p>
-            <h2>Reserva tu lugar</h2>
-            <p>Completa el formulario para asegurar tu participación. Podrás seleccionar si deseas asistir al Programa Financiero, al Programa de Marketing o a ambos.</p>
-            <div className="trust-note"><span aria-hidden="true">✓</span><p><strong>Tu registro es completamente gratuito.</strong> Una vez completes el formulario, recibirás por correo electrónico la confirmación y el enlace para conectarte a la capacitación.</p></div>
+            <h2>Reserva tu cupo</h2>
+            <p>Elige el Programa Financiero, el Programa de Marketing o ambos. Solo necesitas unos segundos para reservar tu cupo.</p>
+            <div className="trust-note"><span aria-hidden="true">✓</span><p><strong>Tu cupo es completamente gratuito.</strong> Recibirás por correo electrónico la confirmación y el enlace para conectarte a la capacitación.</p></div>
           </div>
-
-          <form className="registration-form">
-            <div className="form-title"><span>Formulario de registro</span><strong>GRATUITO</strong></div>
-            <label>Nombre completo<input name="fullName" type="text" autoComplete="name" required /></label>
-            <div className="form-row">
-              <label>Correo electrónico<input name="email" type="email" autoComplete="email" required /></label>
-              <label>Número de teléfono<input name="phone" type="tel" autoComplete="tel" required /></label>
-            </div>
-            <div className="form-row">
-              <label>ZIP Code<input name="zipCode" type="text" inputMode="numeric" autoComplete="postal-code" required /></label>
-              <label>Nombre de la empresa <small>(opcional)</small><input name="company" type="text" autoComplete="organization" /></label>
-            </div>
-            <label>¿En qué etapa se encuentra tu negocio?
-              <select name="businessStage" defaultValue="" required>
-                <option value="" disabled>Selecciona una opción</option>
-                <option>Tengo una idea de negocio</option>
-                <option>Estoy comenzando</option>
-                <option>Mi negocio está en operación</option>
-                <option>Mi negocio está en crecimiento</option>
-              </select>
-            </label>
-            <label>¿Qué describe mejor tu negocio o proyecto?<textarea name="businessDescription" rows={3} required></textarea></label>
-            <label>¿A cuál programa deseas asistir?
-              <select name="eventSelection" defaultValue="" required>
-                <option value="" disabled>Selecciona una opción</option>
-                <option>Programa Financiero</option>
-                <option>Programa de Marketing</option>
-                <option>Ambos programas</option>
-              </select>
-            </label>
-            <button className="button button-light" type="button">Reservar Mi Cupo Gratis <span aria-hidden="true">→</span></button>
-          </form>
+          <RegistrationForm />
         </div>
       </section>
 
