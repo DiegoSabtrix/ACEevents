@@ -43,6 +43,54 @@ const ethnicityOptions = [
   "Prefiero no responder",
 ];
 
+type MetaPixelFunction = ((...args: unknown[]) => void) & {
+  callMethod?: (...args: unknown[]) => void;
+  queue: unknown[][];
+  push: MetaPixelFunction;
+  loaded: boolean;
+  version: string;
+};
+
+function initializeMetaPixel() {
+  const metaWindow = window as typeof window & {
+    fbq?: MetaPixelFunction;
+    _fbq?: MetaPixelFunction;
+  };
+
+  if (metaWindow.fbq) return;
+
+  const fbq = ((...args: unknown[]) => {
+    if (fbq.callMethod) fbq.callMethod(...args);
+    else fbq.queue.push(args);
+  }) as MetaPixelFunction;
+
+  metaWindow.fbq = fbq;
+  metaWindow._fbq = fbq;
+  fbq.push = fbq;
+  fbq.loaded = true;
+  fbq.version = "2.0";
+  fbq.queue = [];
+
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = "https://connect.facebook.net/en_US/fbevents.js";
+  document.head.appendChild(script);
+
+  fbq("init", "1034539289433580");
+  fbq("track", "PageView");
+}
+
+function trackLead(program: string) {
+  const metaWindow = window as typeof window & {
+    fbq?: (action: string, event: string, parameters?: Record<string, string>) => void;
+  };
+
+  metaWindow.fbq?.("track", "Lead", {
+    content_name: "ACE — Capacitación Empresarial Online",
+    content_category: program,
+  });
+}
+
 export default function RegistrationForm() {
   const [step, setStep] = useState(1);
   const [hasBusiness, setHasBusiness] = useState("");
@@ -50,6 +98,10 @@ export default function RegistrationForm() {
   const [reservationData, setReservationData] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
+
+  useEffect(() => {
+    initializeMetaPixel();
+  }, []);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -127,6 +179,7 @@ export default function RegistrationForm() {
         throw new Error("No fue posible enviar el registro");
       }
 
+      trackLead(programLabel);
       sessionStorage.removeItem("ace-registration-draft");
       setStep(3);
       requestAnimationFrame(() => {
