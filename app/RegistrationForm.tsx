@@ -265,11 +265,11 @@ export default function RegistrationForm() {
           </fieldset>
 
           <button className="button form-submit" type="submit">
-            Continuar <span aria-hidden="true">→</span>
+            CONTINUAR CON MI REGISTRO GRATIS <span aria-hidden="true">→</span>
           </button>
           <div className="form-reassurance" aria-label="Beneficios de la capacitación">
-            <span>✓ 100% gratuito</span>
-            <span>✓ Capacitación online</span>
+            <span>✓ Registro gratuito</span>
+            <span>✓ Evento 100% online</span>
             <span>✓ Cupos limitados</span>
           </div>
         </>

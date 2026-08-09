@@ -21,6 +21,74 @@ const audiences = [
   "Empresas que desean crecer de forma estratégica",
 ];
 
+const siteUrl = "https://ace-capital-coaching.diego681936.chatgpt.site";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      name: "Access to Capital for Entrepreneurs (ACE)",
+      alternateName: "ACE",
+      url: "https://aceloans.org/",
+      logo: `${siteUrl}/images/ace-green-original.png`,
+      description: "Capital, asesoría y conexiones para emprendedores y pequeños negocios.",
+    },
+    {
+      "@type": "Person",
+      "@id": `${siteUrl}/#carolina-ramon`,
+      name: "Carolina Ramon",
+      jobTitle: "Instructora de finanzas empresariales y acceso a capital",
+      image: `${siteUrl}/images/carolina-ramon-instructora-finanzas-3lc.webp`,
+      worksFor: { "@type": "Organization", name: "3LC Enterprises", url: "https://3lcfinancialservices.com/" },
+      url: `${siteUrl}/#carolina-ramon`,
+    },
+    {
+      "@type": "Person",
+      "@id": `${siteUrl}/#diego-sabogal`,
+      name: "Diego Sabogal",
+      jobTitle: "Instructor de marketing digital e inteligencia artificial",
+      image: `${siteUrl}/images/diego-sabogal-instructor-marketing-sabtrix.webp`,
+      sameAs: ["https://www.linkedin.com/in/diegofsabogal", "https://sabtrix.com/"],
+      worksFor: { "@type": "Organization", name: "Sabtrix LLC", url: "https://sabtrix.com/" },
+      url: `${siteUrl}/#diego-sabogal`,
+    },
+    {
+      "@type": "Event",
+      "@id": `${siteUrl}/#programa-financiero`,
+      name: "Programa Financiero: Finanzas y Acceso a Capital para Emprendedores",
+      description: "Capacitación empresarial online gratuita en español para organizar las finanzas, fortalecer el perfil financiero y prepararse para acceder a capital.",
+      startDate: "2026-08-18T10:00:00-04:00",
+      endDate: "2026-08-18T12:00:00-04:00",
+      eventStatus: "https://schema.org/EventScheduled",
+      eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
+      location: { "@type": "VirtualLocation", url: `${siteUrl}/#registro` },
+      image: [`${siteUrl}/images/carolina-ramon-instructora-finanzas-3lc.webp`],
+      organizer: { "@id": `${siteUrl}/#organization` },
+      performer: { "@id": `${siteUrl}/#carolina-ramon` },
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD", availability: "https://schema.org/InStock", url: `${siteUrl}/#registro` },
+      inLanguage: "es-US",
+    },
+    {
+      "@type": "Event",
+      "@id": `${siteUrl}/#programa-marketing`,
+      name: "Programa de Marketing Digital e Inteligencia Artificial para Emprendedores",
+      description: "Capacitación empresarial online gratuita en español para atraer clientes, mejorar procesos y hacer crecer una marca con marketing digital e inteligencia artificial.",
+      startDate: "2026-08-20T10:00:00-04:00",
+      endDate: "2026-08-20T12:00:00-04:00",
+      eventStatus: "https://schema.org/EventScheduled",
+      eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
+      location: { "@type": "VirtualLocation", url: `${siteUrl}/#registro` },
+      image: [`${siteUrl}/images/diego-sabogal-instructor-marketing-sabtrix.webp`],
+      organizer: { "@id": `${siteUrl}/#organization` },
+      performer: { "@id": `${siteUrl}/#diego-sabogal` },
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD", availability: "https://schema.org/InStock", url: `${siteUrl}/#registro` },
+      inLanguage: "es-US",
+    },
+  ],
+};
+
 function OnlineIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -66,6 +134,7 @@ function ProgramIcon({ type }: { type: "finance" | "marketing" }) {
 export default function Home() {
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
       <a className="skip-link" href="#main-content">Ir al contenido</a>
 
       <header className="site-header" id="top">
@@ -74,7 +143,7 @@ export default function Home() {
             <img src="/images/ace-green-original.png" alt="ACE" />
           </a>
           <div className="nav-actions">
-            <a className="button button-small" href="#registro">Reservar mi cupo</a>
+            <a className="button button-small" href="#registro">REGISTRARME GRATIS</a>
           </div>
         </div>
       </header>
@@ -82,11 +151,11 @@ export default function Home() {
       <section className="hero" id="main-content">
         <div className="container hero-grid">
           <div className="hero-content">
-            <p className="eyebrow light">Capacitación empresarial online gratuita</p>
-            <h1>El siguiente paso para hacer crecer tu negocio comienza aquí.</h1>
-            <p className="hero-caption">Aprende herramientas prácticas de finanzas, marketing e Inteligencia Artificial para fortalecer tu empresa y tomar mejores decisiones.</p>
+            <p className="eyebrow light"><span className="nowrap">Capacitación empresarial gratis</span> <span aria-hidden="true">•</span> <span className="nowrap">100% online</span></p>
+            <h1>Dos capacitaciones online y gratuitas para hacer crecer tu negocio</h1>
+            <p className="hero-caption">Aprende herramientas prácticas de finanzas, acceso a capital, marketing e Inteligencia Artificial. Participa desde cualquier lugar y elige uno o ambos programas sin costo.</p>
             <div className="hero-actions">
-              <a className="button button-light" href="#registro">Reservar mi cupo gratis <span aria-hidden="true">→</span></a>
+              <a className="button button-light" href="#registro">RESERVAR MI CUPO GRATIS <span aria-hidden="true">→</span></a>
               <a className="hero-link" href="#capacitaciones">Conocer los programas</a>
             </div>
           </div>
@@ -98,43 +167,49 @@ export default function Home() {
 
       <section className="alert-strip" aria-label="Información principal del evento">
         <div className="container facts-grid">
-          <div><span className="fact-icon"><OnlineIcon /></span><p><strong>100% online</strong><small>Conéctate desde cualquier lugar</small></p></div>
-          <div><span className="fact-icon"><FreeIcon /></span><p><strong>Sin costo</strong><small>Capacitación completamente gratuita</small></p></div>
-          <div><span className="fact-icon"><RegistrationIcon /></span><p><strong>Una sola reserva</strong><small>Reserva uno o ambos programas</small></p></div>
+          <div><span className="fact-icon"><OnlineIcon /></span><p><strong>100% ONLINE</strong><small>Conéctate desde cualquier lugar</small></p></div>
+          <div><span className="fact-icon"><FreeIcon /></span><p><strong>TOTALMENTE GRATIS</strong><small>Participa sin ningún costo</small></p></div>
+          <div><span className="fact-icon"><RegistrationIcon /></span><p><strong>UNA SOLA RESERVA</strong><small>Elige uno o ambos programas</small></p></div>
         </div>
       </section>
 
       <section className="events section" id="capacitaciones">
         <div className="container">
           <div className="section-heading event-heading">
-            <div><p className="eyebrow">Dos programas. Una sola reserva.</p><h2>Elige el programa que tu negocio necesita.</h2></div>
-            <p>Diseñados para emprendedores y pequeños empresarios hispanos que desean hacer crecer su empresa, aumentar sus ventas y acceder a nuevas oportunidades de financiamiento.</p>
+            <div><p className="eyebrow"><span className="nowrap">Dos programas online</span> <span aria-hidden="true">•</span> <span className="nowrap">Una sola reserva gratis</span></p><h2>Elige el programa que tu negocio necesita</h2></div>
+            <p>Participa gratis y desde cualquier lugar. Puedes reservar el Programa Financiero, el Programa de Marketing o ambos.</p>
           </div>
 
           <div className="event-grid">
-            <article className="event-card event-finance">
-              <div className="event-photo" role="img" aria-label="Sesión de capacitación financiera y QuickBooks para emprendedores"></div>
+            <article className="event-card event-finance" id="programa-financiero">
+              <figure className="event-photo" id="carolina-ramon">
+                <img src="/images/carolina-ramon-instructora-finanzas-3lc.webp" alt="Carolina Ramon, instructora de finanzas empresariales y acceso a capital de 3LC Enterprises" width="1914" height="822" loading="lazy" />
+              </figure>
               <div className="event-card-body">
-                <div className="program-label"><span><ProgramIcon type="finance" /></span> Programa virtual</div>
+                <div className="program-label"><span><ProgramIcon type="finance" /></span> Evento online y gratuito</div>
                 <h3>Programa Financiero</h3>
-                <div className="event-meta"><div><small>FECHA</small><strong>Martes, 18 de agosto de 2026</strong></div><div><small>HORARIO</small><strong>10:00 AM – 12:00 PM (ET)</strong></div></div>
+                <p className="instructor-name"><strong>Carolina Ramon</strong><span>Instructora · Principal, 3LC Enterprises</span></p>
+                <div className="event-meta"><div><small>FECHA</small><strong>Martes, 18 de agosto de 2026</strong></div><div><small>HORARIO</small><strong>10:00 AM – 12:00 PM (ET)</strong></div><p className="event-live-note">En vivo <span aria-hidden="true">•</span> 100% online <span aria-hidden="true">•</span> Sin costo</p></div>
                 <p className="event-description">Organiza las finanzas de tu negocio, toma mejores decisiones y fortalece tu perfil para acceder a nuevas oportunidades de capital.</p>
                 <p className="topics-title">Lo que aprenderás</p>
                 <ul>{financialTopics.map(topic => <li key={topic}>{topic}</li>)}</ul>
-                <a className="button event-cta" href="#registro">Reservar mi cupo <span aria-hidden="true">→</span></a>
+                <a className="button event-cta" href="#registro">REGISTRARME GRATIS <span aria-hidden="true">→</span></a>
               </div>
             </article>
 
-            <article className="event-card event-marketing">
-              <div className="event-photo" role="img" aria-label="Sesión de capacitación en estrategia, marketing e inteligencia artificial"></div>
+            <article className="event-card event-marketing" id="programa-marketing">
+              <figure className="event-photo" id="diego-sabogal">
+                <img src="/images/diego-sabogal-instructor-marketing-sabtrix.webp" alt="Diego Sabogal, instructor de marketing digital e inteligencia artificial de Sabtrix LLC" width="1914" height="822" loading="lazy" />
+              </figure>
               <div className="event-card-body">
-                <div className="program-label"><span><ProgramIcon type="marketing" /></span> Programa virtual</div>
+                <div className="program-label"><span><ProgramIcon type="marketing" /></span> Evento online y gratuito</div>
                 <h3>Programa de Marketing</h3>
-                <div className="event-meta"><div><small>FECHA</small><strong>Jueves, 20 de agosto de 2026</strong></div><div><small>HORARIO</small><strong>10:00 AM – 12:00 PM (ET)</strong></div></div>
+                <p className="instructor-name"><strong>Diego Sabogal</strong><span>Instructor · Principal, Sabtrix LLC</span></p>
+                <div className="event-meta"><div><small>FECHA</small><strong>Jueves, 20 de agosto de 2026</strong></div><div><small>HORARIO</small><strong>10:00 AM – 12:00 PM (ET)</strong></div><p className="event-live-note">En vivo <span aria-hidden="true">•</span> 100% online <span aria-hidden="true">•</span> Sin costo</p></div>
                 <p className="event-description">Aprende a utilizar Inteligencia Artificial y estrategias digitales para ahorrar tiempo, atraer clientes y hacer crecer tu marca.</p>
                 <p className="topics-title">Lo que aprenderás</p>
                 <ul>{marketingTopics.map(topic => <li key={topic}>{topic}</li>)}</ul>
-                <a className="button event-cta" href="#registro">Reservar mi cupo <span aria-hidden="true">→</span></a>
+                <a className="button event-cta" href="#registro">REGISTRARME GRATIS <span aria-hidden="true">→</span></a>
               </div>
             </article>
           </div>
@@ -144,11 +219,12 @@ export default function Home() {
       <section className="audience section" id="participantes">
         <div className="container audience-grid">
           <div className="audience-copy">
-            <p className="eyebrow light">Capacitación Empresarial Online Gratuita</p>
+            <p className="eyebrow light"><span className="nowrap">Evento online y gratuito</span> para emprendedores</p>
             <h2>¿Quiénes pueden participar?</h2>
             <div className="audience-list">
               {audiences.map((audience) => <div key={audience}><span aria-hidden="true">✓</span><strong>{audience}</strong></div>)}
             </div>
+            <p className="audience-online-note">No importa dónde te encuentres. Solo necesitas conexión a internet para participar.</p>
           </div>
           <div className="audience-photo" role="img" aria-label="Dos empresarias frente a su negocio"><div className="photo-badge"><strong>2</strong><span>programas virtuales</span></div></div>
         </div>
@@ -160,10 +236,10 @@ export default function Home() {
             <a className="registration-logo-link" href="https://aceloans.org/" target="_blank" rel="noreferrer" aria-label="Visitar el sitio web de ACE">
               <img className="registration-logo" src="/images/ace-white-original.png" alt="ACE" />
             </a>
-            <p className="eyebrow light">Capacitación Empresarial Online Gratuita</p>
-            <h2>Reserva tu cupo</h2>
-            <p>Elige el Programa Financiero, el Programa de Marketing o ambos y completa un registro claro de aproximadamente 2 minutos.</p>
-            <div className="trust-note"><span aria-hidden="true">✓</span><p><strong>Tu cupo es completamente gratuito.</strong> Recibirás por SMS y correo electrónico la confirmación y el enlace para conectarte a la capacitación.</p></div>
+            <p className="eyebrow light"><span className="nowrap">Registro gratis</span> <span aria-hidden="true">•</span> <span className="nowrap">Evento 100% online</span></p>
+            <h2>Reserva gratis tu cupo online</h2>
+            <p>Elige el Programa Financiero, el Programa de Marketing o ambos. Completa el registro en aproximadamente 2 minutos y recibe por email y SMS el enlace para conectarte.</p>
+            <div className="trust-note"><span aria-hidden="true">✓</span><p><strong>Tu registro y participación son completamente gratuitos.</strong> No se solicitará información de pago.</p></div>
           </div>
           <RegistrationForm />
         </div>
