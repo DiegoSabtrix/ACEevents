@@ -43,6 +43,39 @@ const ethnicityOptions = [
   "Prefiero no responder",
 ];
 
+const retryableSubmissionStatuses = new Set([408, 425, 429, 500, 502, 503, 504]);
+
+function wait(milliseconds: number) {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
+}
+
+async function submitRegistration(payload: Record<string, string>) {
+  let lastResponse: Response | null = null;
+
+  for (let attempt = 1; attempt <= 2; attempt += 1) {
+    try {
+      const response = await fetch("/api/registration", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Registration-Id": payload.registration_id,
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) return response;
+      lastResponse = response;
+      if (!retryableSubmissionStatuses.has(response.status)) break;
+    } catch {
+      // A second attempt covers brief connectivity interruptions.
+    }
+
+    if (attempt < 2) await wait(600);
+  }
+
+  return lastResponse;
+}
+
 type MetaPixelFunction = ((...args: unknown[]) => void) & {
   callMethod?: (...args: unknown[]) => void;
   queue: unknown[][];
@@ -141,6 +174,7 @@ export default function RegistrationForm() {
     const programLabel = programs.find((program) => program.value === values.eventSelection)?.label ?? "";
 
     const payload = {
+      registration_id: crypto.randomUUID(),
       form_name: "ACE — Capacitación Empresarial Online",
       registration_status: "Registro completo",
       first_name: values.firstName,
@@ -169,13 +203,9 @@ export default function RegistrationForm() {
     };
 
     try {
-      const response = await fetch("/api/registration", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+      const response = await submitRegistration(payload);
 
-      if (!response.ok) {
+      if (!response?.ok) {
         throw new Error("No fue posible enviar el registro");
       }
 
