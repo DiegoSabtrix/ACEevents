@@ -2,11 +2,10 @@
 
 import { FormEvent, useEffect, useState } from "react";
 
-const programs = [
-  { value: "financiero", label: "Programa Financiero" },
-  { value: "marketing", label: "Programa de Marketing" },
-  { value: "ambos", label: "Ambos programas" },
-];
+const programSets = {
+  online: [{ value: "marketing", label: "Programa de Marketing" }],
+  tifton: [{ value: "tifton-intensivo", label: "Programa Intensivo de Estrategia Empresarial" }],
+} as const;
 
 const attributionFields = [
   "utm_source",
@@ -113,18 +112,23 @@ function initializeMetaPixel() {
   fbq("track", "PageView");
 }
 
-function trackLead(program: string) {
+function trackLead(program: string, formName: string) {
   const metaWindow = window as typeof window & {
     fbq?: (action: string, event: string, parameters?: Record<string, string>) => void;
   };
 
   metaWindow.fbq?.("track", "Lead", {
-    content_name: "ACE — Capacitación Empresarial Online",
+    content_name: formName,
     content_category: program,
   });
 }
 
-export default function RegistrationForm() {
+export default function RegistrationForm({ variant = "online" }: { variant?: "online" | "tifton" }) {
+  const programs = programSets[variant];
+  const isTifton = variant === "tifton";
+  const formName = isTifton
+    ? "ACE — Programa Intensivo de Estrategia Empresarial — Tifton"
+    : "ACE — Capacitación Empresarial Online";
   const [step, setStep] = useState(1);
   const [hasBusiness, setHasBusiness] = useState("");
   const [attribution, setAttribution] = useState<Record<string, string>>({});
@@ -175,7 +179,7 @@ export default function RegistrationForm() {
 
     const payload = {
       registration_id: crypto.randomUUID(),
-      form_name: "ACE — Capacitación Empresarial Online",
+      form_name: formName,
       registration_status: "Registro completo",
       first_name: values.firstName,
       last_name: values.lastName,
@@ -209,7 +213,7 @@ export default function RegistrationForm() {
         throw new Error("No fue posible enviar el registro");
       }
 
-      trackLead(programLabel);
+      trackLead(programLabel, formName);
       sessionStorage.removeItem("ace-registration-draft");
       setStep(3);
       requestAnimationFrame(() => {
@@ -283,11 +287,11 @@ export default function RegistrationForm() {
           </label>
 
           <fieldset className="program-fieldset">
-            <legend>¿A cuál programa deseas asistir?</legend>
+            <legend>Programa disponible</legend>
             <div className="program-options">
               {programs.map((program) => (
                 <label className="program-option" key={program.value}>
-                  <input type="radio" name="eventSelection" value={program.value} defaultChecked={reservationData.eventSelection === program.value} required />
+                  <input type="radio" name="eventSelection" value={program.value} defaultChecked={reservationData.eventSelection ? reservationData.eventSelection === program.value : true} required />
                   <span>{program.label}</span>
                 </label>
               ))}
@@ -299,7 +303,7 @@ export default function RegistrationForm() {
           </button>
           <div className="form-reassurance" aria-label="Beneficios de la capacitación">
             <span>✓ Registro gratuito</span>
-            <span>✓ Evento 100% online</span>
+            <span>✓ {isTifton ? "Presencial en Tifton" : "Evento 100% online"}</span>
             <span>✓ Cupos limitados</span>
           </div>
         </>
@@ -409,18 +413,18 @@ export default function RegistrationForm() {
           <span className="form-kicker">Registro confirmado</span>
           <h3 id="registro-confirmado" tabIndex={-1}>¡Tu registro está completo!</h3>
           <p>Gracias por registrarte. Te enviaremos un SMS y un correo electrónico con la confirmación.</p>
-          <p>También recibirás el enlace de acceso y los recordatorios antes del evento.</p>
+          <p>{isTifton ? "También recibirás la información del lugar y los recordatorios antes del evento." : "También recibirás el enlace de acceso y los recordatorios antes del evento."}</p>
           {selectedProgram && (
             <div className="selected-program">
               <span>Programa seleccionado</span>
               <strong>{selectedProgram}</strong>
-              <small>Modalidad online</small>
+              <small>{isTifton ? "Presencial en Tifton" : "Modalidad online"}</small>
             </div>
           )}
           <div className="confirmation-details" aria-label="Próximos pasos">
             <span>✓ Confirmación por SMS</span>
             <span>✓ Confirmación por correo</span>
-            <span>✓ Acceso al evento</span>
+            <span>✓ {isTifton ? "Información del lugar" : "Acceso al evento"}</span>
           </div>
         </div>
       )}

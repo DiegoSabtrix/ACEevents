@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//ACE//Programa Intensivo de Estrategia Empresarial//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:programa-intensivo-tifton-20260827@aceloans.org
+DTSTAMP:20260822T000000Z
+DTSTART;TZID=America/New_York:20260827T100000
+DTEND;TZID=America/New_York:20260827T120000
+SUMMARY:Programa Intensivo de Estrategia Empresarial
+DESCRIPTION:Capacitación empresarial gratuita y presencial para dueños de negocios con al menos dos años de operación.
+LOCATION:Georgia Chamber's Center for Rural Prosperity\, 1001 Love Ave\, Tifton\, GA 31794
+URL:https://ace-capital-coaching.diego681936.chatgpt.site/events
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

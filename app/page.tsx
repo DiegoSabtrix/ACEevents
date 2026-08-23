@@ -61,13 +61,13 @@ const structuredData = {
       description: "Capacitación empresarial online gratuita en español para organizar las finanzas, fortalecer el perfil financiero y prepararse para acceder a capital.",
       startDate: "2026-08-18T10:00:00-04:00",
       endDate: "2026-08-18T12:00:00-04:00",
-      eventStatus: "https://schema.org/EventScheduled",
+      eventStatus: "https://schema.org/EventCompleted",
       eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
       location: { "@type": "VirtualLocation", url: `${siteUrl}/#registro` },
       image: [`${siteUrl}/images/carolina-ramon-instructora-finanzas-3lc.webp`],
       organizer: { "@id": `${siteUrl}/#organization` },
       performer: { "@id": `${siteUrl}/#carolina-ramon` },
-      offers: { "@type": "Offer", price: "0", priceCurrency: "USD", availability: "https://schema.org/InStock", url: `${siteUrl}/#registro` },
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD", availability: "https://schema.org/SoldOut", url: `${siteUrl}/#programa-financiero` },
       inLanguage: "es-US",
     },
     {
@@ -152,15 +152,15 @@ export default function Home() {
         <div className="container hero-grid">
           <div className="hero-content">
             <p className="eyebrow light"><span className="nowrap">Capacitación empresarial gratis</span> <span aria-hidden="true">•</span> <span className="nowrap">100% online</span></p>
-            <h1>Dos capacitaciones online y gratuitas para hacer crecer tu negocio</h1>
-            <p className="hero-caption">Aprende herramientas prácticas de finanzas, acceso a capital, marketing e Inteligencia Artificial. Participa desde cualquier lugar y elige uno o ambos programas sin costo.</p>
+            <h1>El Programa de Marketing sigue abierto para hacer crecer tu negocio</h1>
+            <p className="hero-caption">El Programa Financiero ya finalizó y fue todo un éxito. Reserva ahora tu cupo gratuito para aprender Marketing e Inteligencia Artificial.</p>
             <div className="hero-actions">
               <a className="button button-light" href="#registro">RESERVAR MI CUPO GRATIS <span aria-hidden="true">→</span></a>
               <a className="hero-link" href="#capacitaciones">Conocer los programas</a>
             </div>
           </div>
           <div className="hero-visual" role="img" aria-label="Dos emprendedores dentro de su negocio">
-            <div className="hero-badge"><span>2</span><strong>programas<br />virtuales</strong></div>
+            <div className="hero-badge"><span>1</span><strong>programa<br />disponible</strong></div>
           </div>
         </div>
       </section>
@@ -169,31 +169,31 @@ export default function Home() {
         <div className="container facts-grid">
           <div><span className="fact-icon"><OnlineIcon /></span><p><strong>100% ONLINE</strong><small>Conéctate desde cualquier lugar</small></p></div>
           <div><span className="fact-icon"><FreeIcon /></span><p><strong>TOTALMENTE GRATIS</strong><small>Participa sin ningún costo</small></p></div>
-          <div><span className="fact-icon"><RegistrationIcon /></span><p><strong>UNA SOLA RESERVA</strong><small>Elige uno o ambos programas</small></p></div>
+          <div><span className="fact-icon"><RegistrationIcon /></span><p><strong>CUPO DISPONIBLE</strong><small>Programa de Marketing</small></p></div>
         </div>
       </section>
 
       <section className="events section" id="capacitaciones">
         <div className="container">
           <div className="section-heading event-heading">
-            <div><p className="eyebrow"><span className="nowrap">Dos programas online</span> <span aria-hidden="true">•</span> <span className="nowrap">Una sola reserva gratis</span></p><h2>Elige el programa que tu negocio necesita</h2></div>
-            <p>Participa gratis y desde cualquier lugar. Puedes reservar el Programa Financiero, el Programa de Marketing o ambos.</p>
+            <div><p className="eyebrow"><span className="nowrap">Programa Financiero finalizado</span> <span aria-hidden="true">•</span> <span className="nowrap">Marketing disponible</span></p><h2>Reserva tu cupo para Marketing</h2></div>
+            <p>El Programa Financiero ya finalizó y fue todo un éxito. El Programa de Marketing continúa disponible, gratis y 100% online.</p>
           </div>
 
           <div className="event-grid">
-            <article className="event-card event-finance" id="programa-financiero">
+            <article className="event-card event-finance event-card-closed" id="programa-financiero">
               <figure className="event-photo" id="carolina-ramon">
                 <img src="/images/carolina-ramon-instructora-finanzas-3lc.webp" alt="Carolina Ramon, instructora de finanzas empresariales y acceso a capital de 3LC Enterprises" width="1914" height="822" loading="lazy" />
               </figure>
               <div className="event-card-body">
-                <div className="program-label"><span><ProgramIcon type="finance" /></span> Evento online y gratuito</div>
+                <div className="program-label"><span><ProgramIcon type="finance" /></span> Evento finalizado · Fue todo un éxito</div>
                 <h3>Programa Financiero</h3>
                 <p className="instructor-name"><strong>Carolina Ramon</strong><span>Instructora · Principal, 3LC Enterprises</span></p>
-                <div className="event-meta"><div><small>FECHA</small><strong>Martes, 18 de agosto de 2026</strong></div><div><small>HORARIO</small><strong>10:00 AM – 12:00 PM (ET)</strong></div><p className="event-live-note">En vivo <span aria-hidden="true">•</span> 100% online <span aria-hidden="true">•</span> Sin costo</p></div>
-                <p className="event-description">Organiza las finanzas de tu negocio, toma mejores decisiones y fortalece tu perfil para acceder a nuevas oportunidades de capital.</p>
+                <div className="event-meta"><div><small>FECHA</small><strong>Martes, 18 de agosto de 2026</strong></div><div><small>HORARIO</small><strong>10:00 AM – 12:00 PM (ET)</strong></div><p className="event-live-note">Evento finalizado <span aria-hidden="true">•</span> Registro cerrado</p></div>
+                <p className="event-description">Este programa ya finalizó y fue todo un éxito. ¡Vuelve pronto! Abriremos una nueva edición del Programa Financiero.</p>
                 <p className="topics-title">Lo que aprenderás</p>
                 <ul>{financialTopics.map(topic => <li key={topic}>{topic}</li>)}</ul>
-                <a className="button event-cta" href="#registro">REGISTRARME GRATIS <span aria-hidden="true">→</span></a>
+                <span className="button event-cta event-cta-closed" aria-disabled="true">REGISTRO CERRADO <span>VUELVE PRONTO</span></span>
               </div>
             </article>
 
@@ -226,7 +226,7 @@ export default function Home() {
             </div>
             <p className="audience-online-note">No importa dónde te encuentres. Solo necesitas conexión a internet para participar.</p>
           </div>
-          <div className="audience-photo" role="img" aria-label="Dos empresarias frente a su negocio"><div className="photo-badge"><strong>2</strong><span>programas virtuales</span></div></div>
+          <div className="audience-photo" role="img" aria-label="Dos empresarias frente a su negocio"><div className="photo-badge"><strong>1</strong><span>programa disponible</span></div></div>
         </div>
       </section>
 
@@ -238,7 +238,7 @@ export default function Home() {
             </a>
             <p className="eyebrow light"><span className="nowrap">Registro gratis</span> <span aria-hidden="true">•</span> <span className="nowrap">Evento 100% online</span></p>
             <h2>Reserva gratis tu cupo online</h2>
-            <p>Elige el Programa Financiero, el Programa de Marketing o ambos. Completa el registro en aproximadamente 2 minutos y recibe por email y SMS el enlace para conectarte.</p>
+            <p>El Programa de Marketing es la capacitación disponible. Completa el registro en aproximadamente 2 minutos y recibe por email y SMS el enlace para conectarte.</p>
             <div className="trust-note"><span aria-hidden="true">✓</span><p><strong>Tu registro y participación son completamente gratuitos.</strong> No se solicitará información de pago.</p></div>
           </div>
           <RegistrationForm />
