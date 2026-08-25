@@ -55,6 +55,7 @@ button, input, select, textarea { font: inherit; }
 .hero-badge strong { font-size: 11px; line-height: 1.3; letter-spacing: .08em; text-transform: uppercase; }
 .eligibility-note { width: fit-content; margin: 24px 0 0; padding: 10px 14px; border: 1px solid rgba(255,255,255,.24); border-radius: 9px; color: rgba(255,255,255,.88); font-size: 12px; font-weight: 750; }
 .events-hero-visual { background-image: linear-gradient(180deg, rgba(7,63,58,.02), rgba(7,63,58,.28)), url('/images/tifton-business-classroom.jpg'); background-position: center; }
+.online-hero-visual { background-image: linear-gradient(180deg, rgba(7,63,58,.02), rgba(7,63,58,.28)), url('/images/ace-community-tablet.webp'); background-position: center; }
 .events-date-badge { width: 190px; }
 
 .alert-strip { position: relative; z-index: 3; margin-top: -28px; }
@@ -215,6 +216,7 @@ button, input, select, textarea { font: inherit; }
 .audience-online-note { max-width: 560px; margin: 28px 0 0; color: rgba(255, 255, 255, .8); font-size: 15px; line-height: 1.65; }
 .audience-photo { position: relative; min-height: 570px; border-radius: 22px; background: url('/images/ace-story-open.webp') center / cover; }
 .events-audience-photo { background-image: linear-gradient(180deg, rgba(7,63,58,.02), rgba(7,63,58,.22)), url('/images/ace-community-event-connections.webp'); }
+.online-audience-photo { background-image: linear-gradient(180deg, rgba(7,63,58,.02), rgba(7,63,58,.22)), url('/images/ace-community-fashion.webp'); background-position: center; }
 .photo-badge { position: absolute; right: -18px; bottom: 30px; width: 156px; height: 156px; padding: 22px; border-radius: 18px; background: var(--lime); color: var(--ink); display: flex; flex-direction: column; justify-content: end; box-shadow: var(--shadow); }
 .photo-badge strong { font-size: 52px; line-height: 1; letter-spacing: -.06em; }
 .photo-badge span { font-size: 10px; line-height: 1.4; letter-spacing: .1em; text-transform: uppercase; }

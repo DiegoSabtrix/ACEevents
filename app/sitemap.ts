@@ -14,5 +14,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily",
       priority: 1,
     },
+    {
+      url: "https://ace-capital-coaching.diego681936.chatgpt.site/online",
+      lastModified: new Date("2026-08-25"),
+      changeFrequency: "daily",
+      priority: 1,
+    },
   ];
 }
