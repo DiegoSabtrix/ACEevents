@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useState } from "react";
 
 const programSets = {
   online: [{ value: "marketing", label: "Programa de Marketing" }],
+  ia: [{ value: "marketing", label: "Impulsa tu negocio con IA y Marketing Digital" }],
   tifton: [{ value: "tifton-intensivo", label: "Programa Intensivo de Estrategia Empresarial" }],
   money: [{ value: "managing-money-securing-capital", label: "Managing Money & Securing Capital" }],
 } as const;
@@ -124,7 +125,7 @@ function trackLead(program: string, formName: string) {
   });
 }
 
-export default function RegistrationForm({ variant = "online" }: { variant?: "online" | "tifton" | "money" }) {
+export default function RegistrationForm({ variant = "online" }: { variant?: "online" | "ia" | "tifton" | "money" }) {
   const programs = programSets[variant];
   const isTifton = variant === "tifton";
   const isEnglish = variant === "money";
@@ -132,7 +133,9 @@ export default function RegistrationForm({ variant = "online" }: { variant?: "on
     ? "ACE — Programa Intensivo de Estrategia Empresarial — Tifton"
     : isEnglish
       ? "ACE — Managing Money & Securing Capital — Online — September 1, 2026"
-      : "ACE — Capacitación Empresarial Online";
+      : variant === "ia"
+        ? "ACE — Impulsa tu negocio con IA y Marketing Digital — Septiembre 2, 2026"
+        : "ACE — Capacitación Empresarial Online";
   const [step, setStep] = useState(1);
   const [hasBusiness, setHasBusiness] = useState("");
   const [attribution, setAttribution] = useState<Record<string, string>>({});
