@@ -16,16 +16,16 @@ const audiences = [
 ];
 
 const siteUrl = "https://ace-capital-coaching.diego681936.chatgpt.site";
-const pageUrl = `${siteUrl}/IA`;
+const pageUrl = `${siteUrl}/ia`;
 
 export const metadata: Metadata = {
   title: "Impulsa tu negocio con IA y Marketing Digital | ACE",
   description: "Evento online gratuito de ACE con Diego Sabogal sobre herramientas de IA, creación de contenido, marketing digital, productividad y crecimiento de marca. Miércoles 2 de septiembre de 2026, de 9:00 a 10:00 AM ET.",
-  alternates: { canonical: "/IA", languages: { "es-US": "/IA" } },
+  alternates: { canonical: "/ia", languages: { "es-US": "/ia" } },
   openGraph: {
     type: "website",
     locale: "es_US",
-    url: "/IA",
+    url: "/ia",
     title: "Impulsa tu negocio con IA y Marketing Digital",
     description: "Capacitación gratuita de ACE con Diego Sabogal · 2 de septiembre · 9:00 AM ET.",
     images: [{ url: "/images/diego-sabogal-instructor-marketing-sabtrix.webp", width: 1914, height: 822, alt: "Diego Sabogal, instructor de IA y marketing digital" }],

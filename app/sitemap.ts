@@ -21,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: "https://ace-capital-coaching.diego681936.chatgpt.site/IA",
+      url: "https://ace-capital-coaching.diego681936.chatgpt.site/ia",
       lastModified: new Date("2026-09-01"),
       changeFrequency: "daily",
       priority: 1,
